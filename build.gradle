@@ -1,0 +1,33 @@
+apply plugin: 'war'
+
+//gretty
+buildscript {
+    repositories { jcenter() }
+    dependencies { classpath 'org.akhikhl.gretty:gretty:+' }
+}
+apply plugin: 'org.akhikhl.gretty'
+
+ext.jetty94Version = '9.4.10.v20180503'
+
+gretty.servletContainer = 'jetty9.4'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    mavenLocal() // remove when keikai client is published
+    maven { url "http://mavensync.zkoss.org/eval" }
+}
+
+dependencies {
+    compile "io.keikai:keikai-java-client:0.8.0-SNAPSHOT"
+    compile "org.webjars.bower:bootstrap:4.1.0"
+    testCompile "junit:junit:4.12"
+}
+
+
+
+
+
+
