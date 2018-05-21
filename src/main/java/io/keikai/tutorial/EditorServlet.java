@@ -10,8 +10,7 @@ import java.io.*;
 import static io.keikai.tutorial.Configuration.SPREADSHEET;
 
 @WebServlet("/editor/*")
-public class EditorServlet extends HttpServlet {
-    private Spreadsheet spreadsheet; //session scope variable
+public class EditorServlet extends BaseServlet {
     private File defaultExportFolder;
 
     @Override
@@ -36,7 +35,7 @@ public class EditorServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        initSpreadsheet(req);
+        getSpreadsheet(req);
         req.getRequestDispatcher("/editor.jsp").forward(req, resp);
     }
 
@@ -44,21 +43,6 @@ public class EditorServlet extends HttpServlet {
         FileOutputStream outputStream = new FileOutputStream(file);
         spreadsheet.export(spreadsheet.getCurrentWorkbook(), outputStream).whenComplete((obj, throwable) -> {
         });
-    }
-
-    private Spreadsheet getSpreadsheet(ServletRequest request) {
-        spreadsheet = (Spreadsheet) ((HttpServletRequest) request).getSession().getAttribute(SPREADSHEET);
-        if (spreadsheet == null) {
-            initSpreadsheet(request);
-        }
-        return spreadsheet;
-    }
-
-    private void initSpreadsheet(ServletRequest request) {
-        spreadsheet = Keikai.newClient(Configuration.INTERNAL_KEIKAI_SERVER);
-        String keikaiJs = spreadsheet.getURI("spreadsheet"); // pass the anchor DOM element id for rendering keikai
-        request.setAttribute("keikaiJs", keikaiJs);
-        ((HttpServletRequest) request).getSession().setAttribute(Configuration.SPREADSHEET, spreadsheet);
     }
 
     private boolean isAction(HttpServletRequest request, String action) {

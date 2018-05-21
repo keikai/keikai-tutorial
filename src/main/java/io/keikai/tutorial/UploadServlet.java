@@ -1,8 +1,9 @@
 package io.keikai.tutorial;
 
+import com.google.gson.*;
 import io.keikai.client.api.Spreadsheet;
+import org.apache.commons.io.IOUtils;
 
-import javax.security.auth.callback.ConfirmationCallback;
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
@@ -13,8 +14,7 @@ import static io.keikai.tutorial.Configuration.SPREADSHEET;
 @WebServlet("/editor/upload")
 @MultipartConfig(maxFileSize = 1024 * 1024 * 50, //50MB
         location = "/" + Configuration.DEFAULT_FILE_FOLDER)
-public class UploadServlet extends HttpServlet {
-    private Spreadsheet spreadsheet;
+public class UploadServlet extends BaseServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -23,36 +23,35 @@ public class UploadServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        spreadsheet = (Spreadsheet) ((HttpServletRequest) request).getSession().getAttribute(SPREADSHEET);
-        response.setContentType("text/html;charset=UTF-8");
+        spreadsheet = getSpreadsheet(request);
 
-            // Create path components to save the file
-            final Part filePart = request.getPart("file");
-            final String fileName = getFileName(filePart);
+        // Create path components to save the file
+        final Part filePart = request.getPart("file");
+        final String fileName = extractFileName(filePart);
 
-            final PrintWriter writer = response.getWriter();
-            OutputStream out = null;
-            InputStream filecontent = null;
+        final PrintWriter writer = response.getWriter();
+        OutputStream out = null;
+        InputStream inputStream = null;
         try {
-            out = new FileOutputStream(new File( request.getServletContext().getRealPath(File.separator + Configuration.DEFAULT_FILE_FOLDER)
+            out = new FileOutputStream(new File(request.getServletContext().getRealPath(File.separator + Configuration.DEFAULT_FILE_FOLDER)
                     + File.separator + fileName));
-            filecontent = filePart.getInputStream();
+            inputStream = filePart.getInputStream();
+            byte[] bytes = IOUtils.toByteArray(inputStream);
 
-            int read = 0;
-            final byte[] bytes = new byte[1024];
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+            spreadsheet.imports(fileName, byteArrayInputStream);
 
-            while ((read = filecontent.read(bytes)) != -1) {
-                out.write(bytes, 0, read);
-            }
-            writer.println("New file " + fileName + " created at " + Configuration.DEFAULT_FILE_FOLDER);
+            response.setContentType("text/plain");
+
+            writer.print(getJsonConverter().toJson("success"));
         } catch (FileNotFoundException fne) {
             fne.printStackTrace();
         } finally {
             if (out != null) {
                 out.close();
             }
-            if (filecontent != null) {
-                filecontent.close();
+            if (inputStream != null) {
+                inputStream.close();
             }
             if (writer != null) {
                 writer.close();
@@ -60,9 +59,8 @@ public class UploadServlet extends HttpServlet {
         }
     }
 
-    private String getFileName(final Part part) {
+    private String extractFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
-//        LOGGER.log(Level.INFO, "Part Header = {0}", partHeader);
         for (String content : part.getHeader("content-disposition").split(";")) {
             if (content.trim().startsWith("filename")) {
                 return content.substring(
@@ -72,17 +70,10 @@ public class UploadServlet extends HttpServlet {
         return null;
     }
 
-    /**
-     * Extracts file name from HTTP header content-disposition
-     */
-    private String extractFileName(Part part) {
-        String contentDisp = part.getHeader("content-disposition");
-        String[] items = contentDisp.split(";");
-        for (String s : items) {
-            if (s.trim().startsWith("filename")) {
-                return s.substring(s.indexOf("=") + 2, s.length() - 1);
-            }
-        }
-        return "";
+    private Gson getJsonConverter(){
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+        return builder.create();
     }
+
 }

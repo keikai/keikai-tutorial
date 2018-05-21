@@ -36,7 +36,7 @@
       </div>
         <form method="POST" action="editor/upload" enctype="multipart/form-data" >
           <div class="modal-body">
-            <input type="file" name="file" id="file">
+            <input type="file" name="file" id="file" accept=".xlsx">
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Upload</button>
