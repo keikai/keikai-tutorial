@@ -15,6 +15,7 @@
 <body >
     <div class="container-fluid">
         <div class="toolbar">
+            <image src="images/keikai-logo.png" style="height: 45px; display: inline-block" />
             <button id="upload" type="button" class="btn btn-primary " data-toggle="modal" data-target="#uploadModal">Upload</button>
             <button id="new" type="button" class="btn btn-primary">New</button>
             <button id="export" type="button" class="btn btn-primary">Export</button>
