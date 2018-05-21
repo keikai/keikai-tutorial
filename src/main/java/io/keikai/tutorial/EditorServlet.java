@@ -6,11 +6,13 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
+import java.util.concurrent.ExecutionException;
 
 import static io.keikai.tutorial.Configuration.SPREADSHEET;
 
 @WebServlet("/editor/*")
 public class EditorServlet extends BaseServlet {
+    private static final String BLANK_XLSX = "blank.xlsx";
     private File defaultExportFolder;
 
     @Override
@@ -29,7 +31,18 @@ public class EditorServlet extends BaseServlet {
                 //TODO response back to clients
                 e.printStackTrace();
             }
-        } else {
+        } else if (isAction(req, "new")){
+            try {
+                if (spreadsheet.containsWorkbook(BLANK_XLSX).get()){
+                    spreadsheet.deleteWorkbook(BLANK_XLSX);
+                }
+                spreadsheet.imports(BLANK_XLSX, req.getServletContext().getResourceAsStream("/WEB-INF"+
+                File.separator + Configuration.INTERNAL_FILE_FOLDER + File.separator + BLANK_XLSX));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
     }
 

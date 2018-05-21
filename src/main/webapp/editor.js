@@ -5,9 +5,9 @@ var $uploadModal;
 $( document ).ready(function(){
     $alert = $('#template .alert');
     $uploadModal = $('#uploadModal');
-//    $('button[id=new]').click();
     $('#uploadModal form').on('submit', uploadXlsx);
     $('button[id=export]').click(exportXlsx);
+    $('button[id=new]').click(newXlsx);
 
 })
 
@@ -48,5 +48,11 @@ var uploadXlsx = function(event){
              // Handle errors here
              console.log('ERRORS: ' + textStatus);
          }
+    });
+}
+
+var newXlsx = function(){
+    $.post('editor/new', function(response){
+        console.log(response);
     });
 }
