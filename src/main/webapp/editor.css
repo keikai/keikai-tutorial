@@ -1,3 +1,7 @@
 html, body, .container-fluid{
     height: 100%;
 }
+
+.toolbar{
+   padding: 10px;
+}
