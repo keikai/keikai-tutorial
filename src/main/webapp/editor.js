@@ -3,17 +3,17 @@ var $alert;
 var $uploadModal;
 
 $( document ).ready(function(){
-    $alert = $('#template .alert');
+    $alert = $('.alert');
     $uploadModal = $('#uploadModal');
     $('#uploadModal form').on('submit', uploadXlsx);
     $('button[id=export]').click(exportXlsx);
     $('button[id=new]').click(newXlsx);
-
+    $('[data-toggle="tooltip"]').tooltip(); //initialize tooltips
 })
 
 var exportXlsx = function(){
-    $.post('editor/export', function(response){
-        console.log(response);
+    $.post('editor/export', function(result){
+        showResult(result);
     });
 }
 
@@ -47,6 +47,9 @@ var uploadXlsx = function(event){
          error: function(jqXHR, textStatus, errorThrown){
              // Handle errors here
              console.log('ERRORS: ' + textStatus);
+         },
+         complete: function(jqXHR, textStatus){
+            showResult(jqXHR.responseJSON);
          }
     });
 }
@@ -55,4 +58,22 @@ var newXlsx = function(){
     $.post('editor/new', function(response){
         console.log(response);
     });
+}
+
+/** show action result with an alert
+* result: a json object converted from Result.java
+*/
+function showResult(result){
+    $alert.html(result.message);
+    $alert.removeClass();
+    switch (result.state){
+        case 'SUCCESS':
+            $alert.addClass('alert alert-success')
+            setTimeout(function(){ $alert.hide()}, 2000);
+            break;
+        case 'ERROR':
+            $alert.addClass('alert alert-danger')
+            break;
+    }
+    $alert.show();
 }

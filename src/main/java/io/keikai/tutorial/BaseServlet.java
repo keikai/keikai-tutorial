@@ -1,5 +1,6 @@
 package io.keikai.tutorial;
 
+import com.google.gson.*;
 import io.keikai.client.api.*;
 
 import javax.servlet.*;
@@ -14,6 +15,13 @@ import static io.keikai.tutorial.Configuration.SPREADSHEET;
  */
 public class BaseServlet extends HttpServlet {
     protected Spreadsheet spreadsheet; //session scope variable
+    static protected Gson gson;
+
+    static{
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+        gson = builder.create();
+    }
 
     protected Spreadsheet getSpreadsheet(ServletRequest request) {
         spreadsheet = (Spreadsheet) ((HttpServletRequest) request).getSession().getAttribute(SPREADSHEET);
