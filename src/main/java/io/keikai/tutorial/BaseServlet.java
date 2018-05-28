@@ -2,11 +2,10 @@ package io.keikai.tutorial;
 
 import com.google.gson.*;
 import io.keikai.client.api.*;
+import io.keikai.util.Maps;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.*;
-import java.io.*;
 
 import static io.keikai.tutorial.Configuration.SPREADSHEET;
 
@@ -17,7 +16,7 @@ public class BaseServlet extends HttpServlet {
     protected Spreadsheet spreadsheet; //session scope variable
     static protected Gson gson;
 
-    static{
+    static {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         gson = builder.create();
@@ -33,13 +32,27 @@ public class BaseServlet extends HttpServlet {
 
     /**
      * store spreadsheet and its javascript in a session
+     *
      * @param request
      */
     protected void initSpreadsheet(ServletRequest request) {
-        spreadsheet = Keikai.newClient(Configuration.INTERNAL_KEIKAI_SERVER);
+        Settings settings = Settings.DEFAULT_SETTINGS.clone();
+        settings.set(Settings.Key.SPREADSHEET_CONFIG, Maps.toMap("toolbar", getToolBarConfig()));
+
+        spreadsheet = Keikai.newClient(Configuration.INTERNAL_KEIKAI_SERVER, settings);
         String keikaiJs = spreadsheet.getURI("spreadsheet"); // pass the anchor DOM element id for rendering keikai
         HttpSession session = ((HttpServletRequest) request).getSession();
         session.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
         session.setAttribute(Configuration.SPREADSHEET, spreadsheet);
+    }
+
+
+    /**
+     * enable upload button
+     *
+     * @return
+     */
+    protected String getToolBarConfig() {
+        return "{\"items\": \"newBook,saveBook,upload,exportToFile|paste,cut,copy|fontName,fontSize,fontItalic,fontBold,fontUnderlined,fontStrike,fontColor,border,fillColor|verticalAlign,horizontalAlign,wrapText,mergeAndCenter|insert,delete|clear,sortAndFilter|protectSheet|freeze,hyperlink\"}";
     }
 }
