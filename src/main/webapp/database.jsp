@@ -21,7 +21,7 @@
             <div class="alert" role="alert" style="display:none">
             </div>
         </div>
-        <div id="spreadsheet" style="height: 90%" >
+        <div id="spreadsheet" data-show-toolbar="false" style="height: 90%" >
         </div>
     </div>
 
