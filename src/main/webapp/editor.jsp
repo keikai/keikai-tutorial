@@ -5,6 +5,9 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel='stylesheet' href='webjars/bootstrap/4.1.0/dist/css/bootstrap.min.css'/>
+    <!--
+    -->
+    <link rel='stylesheet' href='css/fontawesome-all.css'/>
     <link rel='stylesheet' href='editor.css'/>
     <script src='webjars/jquery/3.3.1/jquery.min.js'></script>
     <script src='webjars/bootstrap/4.1.0/dist/js/bootstrap.bundle.min.js'></script>
@@ -17,7 +20,6 @@
         <div class="toolbar">
             <image src="images/keikai-logo.png" style="height: 45px; display: inline-block" />
             <button id="upload" type="button" class="btn btn-primary " data-toggle="modal" data-target="#uploadModal">Upload</button>
-            <button id="new" type="button" class="btn btn-primary" data-toggle="tooltip" title="load a new blank file">New</button>
             <button id="export" type="button" class="btn btn-primary" data-toggle="tooltip" title="download as xlsx file">Download</button>
             <div class="alert" role="alert" style="display:none">
             </div>
