@@ -1,11 +1,11 @@
 apply plugin: 'war'
+apply plugin: 'org.akhikhl.gretty'
 
 //gretty
 buildscript {
     repositories { jcenter() }
     dependencies { classpath 'org.akhikhl.gretty:gretty:+' }
 }
-apply plugin: 'org.akhikhl.gretty'
 
 ext.jetty94Version = '9.4.10.v20180503'
 
