@@ -1,7 +1,8 @@
-package io.keikai.tutorial;
+package io.keikai.tutorial.web;
 
 import com.google.gson.*;
 import io.keikai.client.api.*;
+import io.keikai.tutorial.Configuration;
 import io.keikai.util.Maps;
 
 import javax.servlet.ServletRequest;

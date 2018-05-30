@@ -1,5 +1,7 @@
-package io.keikai.tutorial;
+package io.keikai.tutorial.web;
 
+import io.keikai.tutorial.*;
+import io.keikai.tutorial.web.BaseServlet;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.*;

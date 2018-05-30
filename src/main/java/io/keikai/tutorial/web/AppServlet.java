@@ -1,6 +1,6 @@
-package io.keikai.tutorial;
+package io.keikai.tutorial.web;
 
-import io.keikai.client.api.event.*;
+import io.keikai.tutorial.*;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;

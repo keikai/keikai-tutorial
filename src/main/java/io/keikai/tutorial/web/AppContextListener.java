@@ -1,4 +1,6 @@
-package io.keikai.tutorial;
+package io.keikai.tutorial.web;
+
+import io.keikai.tutorial.SampleDataDao;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebListener;

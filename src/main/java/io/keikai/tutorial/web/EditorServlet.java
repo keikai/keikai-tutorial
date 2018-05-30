@@ -1,14 +1,14 @@
-package io.keikai.tutorial;
+package io.keikai.tutorial.web;
 
-import io.keikai.client.api.*;
 import io.keikai.client.api.event.*;
 import io.keikai.client.api.ui.AuxAction;
+import io.keikai.tutorial.*;
+import io.keikai.tutorial.web.BaseServlet;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
-import java.util.concurrent.ExecutionException;
 
 @WebServlet("/editor/*")
 public class EditorServlet extends BaseServlet {
