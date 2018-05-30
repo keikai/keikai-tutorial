@@ -34,9 +34,6 @@ public class EditorServlet extends BaseServlet {
         Result result = Result.getSuccess("success");
         resp.setContentType("text/plain");
         try {
-            if (isAction(req, "export")) {
-                export();
-            }
         } catch (Exception e) {
             e.printStackTrace();
             result = Result.getErrorResult(e.toString());
@@ -48,14 +45,6 @@ public class EditorServlet extends BaseServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         initSpreadsheet(req);
         req.getRequestDispatcher("/editor.jsp").forward(req, resp);
-    }
-
-    private void export() throws FileNotFoundException, ExecutionException, InterruptedException {
-        String fileName = spreadsheet.loadWorkbook().get().getName();
-        FileOutputStream outputStream = new FileOutputStream(new File(getServletContext().getRealPath(File.separator +
-                Configuration.DEFAULT_FILE_FOLDER + File.separator + fileName)));
-        spreadsheet.export(spreadsheet.getCurrentWorkbook(), outputStream).whenComplete((obj, throwable) -> {
-        });
     }
 
     private boolean isAction(HttpServletRequest request, String action) {
@@ -84,8 +73,6 @@ public class EditorServlet extends BaseServlet {
                         return null;
                     });
                 });
-            } else if (action.equals("exportToFile")) {
-
             }
         };
 
