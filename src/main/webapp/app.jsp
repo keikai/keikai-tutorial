@@ -16,8 +16,6 @@
     <div class="container-fluid">
         <div class="toolbar">
             <image src="images/keikai-logo.png" style="height: 45px; display: inline-block" />
-            <button id="new" type="button" class="btn btn-primary" data-toggle="tooltip" title="load data from a database">Load</button>
-            <button id="export" type="button" class="btn btn-primary" data-toggle="tooltip" title="Save data to a database">Save</button>
             <div class="alert" role="alert" style="display:none">
             </div>
         </div>
