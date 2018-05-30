@@ -2,6 +2,7 @@ package io.keikai.tutorial;
 
 import io.keikai.client.api.*;
 import io.keikai.client.api.event.*;
+import io.keikai.client.api.ui.AuxAction;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -65,7 +66,7 @@ public class EditorServlet extends BaseServlet {
             final String action = auxActionEvent.getAction();
             if (action.equals("saveBook")) {
 
-            } else if (action.equals("newBook")) {
+            } else if (action.equals(AuxAction.NEW_BOOK.getAction())) {
                 spreadsheet.containsWorkbook(BLANK_XLSX).thenAccept(existed -> {
                     spreadsheet.deleteWorkbook(BLANK_XLSX);
                     spreadsheet.imports(BLANK_XLSX, defaultBookFolder).exceptionally(throwable -> {
