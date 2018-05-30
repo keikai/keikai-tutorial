@@ -5,6 +5,7 @@ import org.hsqldb.cmdline.*;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.sql.*;
+import java.util.*;
 
 public class SampleDataDao {
     static String TABLE_NAME = "tutorial";
@@ -26,7 +27,9 @@ public class SampleDataDao {
     static public void initDatabase(){
         try {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
-            con = DriverManager.getConnection("jdbc:hsqldb:file:database/demo", "SA", "");
+            if (con == null) {
+                con = DriverManager.getConnection("jdbc:hsqldb:file:database/demo", "SA", "");
+            }
             stmt = con.createStatement();
             executeSqlFile();
             System.out.println("-> initialized the database");
@@ -50,15 +53,19 @@ public class SampleDataDao {
         file.execute();
     }
 
-    private static void queryAll() throws SQLException {
+    static public List<Expense> queryAll() throws SQLException {
         String sql = "SELECT * FROM " + TABLE_NAME;
         ResultSet resultSet = stmt.executeQuery(sql);
+        LinkedList<Expense> list = new LinkedList<>();
         while (resultSet.next()) {
-            System.out.println(resultSet.getInt("id") + " | " +
-                    resultSet.getString("category") + " | " +
-                    resultSet.getInt("quantity")  + " | " +
-                    resultSet.getInt("subtotal"));
+            Expense expense = new Expense();
+            expense.setId(resultSet.getInt("id"));
+            expense.setCategory(resultSet.getString("category"));
+            expense.setQuantity(resultSet.getInt("quantity"));
+            expense.setSubtotal(resultSet.getInt("subtotal"));
+            list.add(expense);
         }
+        return list;
     }
 
 }
