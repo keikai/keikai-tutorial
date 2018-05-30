@@ -5,6 +5,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel='stylesheet' href='webjars/bootstrap/4.1.0/dist/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='css/fontawesome-all.css'/>
     <link rel='stylesheet' href='editor.css'/>
     <script src='webjars/jquery/3.3.1/jquery.min.js'></script>
     <script src='webjars/bootstrap/4.1.0/dist/js/bootstrap.bundle.min.js'></script>
