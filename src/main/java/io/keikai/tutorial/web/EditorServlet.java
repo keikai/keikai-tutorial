@@ -3,7 +3,6 @@ package io.keikai.tutorial.web;
 import io.keikai.client.api.event.*;
 import io.keikai.client.api.ui.AuxAction;
 import io.keikai.tutorial.*;
-import io.keikai.tutorial.web.BaseServlet;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
