@@ -8,13 +8,18 @@ import java.sql.*;
 import java.util.*;
 
 public class SampleDataDao {
+    /**
+     * http://hsqldb.org/doc/guide/dbproperties-chapt.html
+     * shutdown=true, Automatic Shutdown, shut down the database when the last connection is closed
+     */
+    public static final String HSQLDB_CONNECTION_STRING = "jdbc:hsqldb:file:database/tutorial;shutdown=true";
     static String TABLE_NAME = "tutorial";
     static private Connection con;
     static Statement stmt;
 
     public static void main(String[] args) {
         try {
-            con = DriverManager.getConnection("jdbc:hsqldb:file:database/demo", "SA", "");
+            con = DriverManager.getConnection(HSQLDB_CONNECTION_STRING, "SA", "");
             stmt = con.createStatement();
             executeSqlFile();
             queryAll();
@@ -24,11 +29,11 @@ public class SampleDataDao {
         }
     }
 
-    static public void initDatabase(){
+    static public void initDatabase() {
         try {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
             if (con == null) {
-                con = DriverManager.getConnection("jdbc:hsqldb:file:database/demo", "SA", "");
+                con = DriverManager.getConnection(HSQLDB_CONNECTION_STRING, "SA", "");
             }
             stmt = con.createStatement();
             executeSqlFile();
@@ -38,9 +43,11 @@ public class SampleDataDao {
         }
     }
 
-    static public void close(){
+    static public void close() {
         try {
             con.close();
+            stmt.close();
+            System.out.println("-> close the connection");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -66,6 +73,34 @@ public class SampleDataDao {
             list.add(expense);
         }
         return list;
+    }
+
+    static public List<Expense> queryByCategory() throws SQLException {
+        String sql = "SELECT category, sum(quantity), sum(subtotal) FROM " + TABLE_NAME + " GROUP BY category";
+        ResultSet resultSet = stmt.executeQuery(sql);
+        LinkedList<Expense> list = new LinkedList<>();
+        while (resultSet.next()) {
+            Expense expense = new Expense();
+            expense.setCategory(resultSet.getString("category"));
+            expense.setQuantity(resultSet.getInt("quantity"));
+            expense.setSubtotal(resultSet.getInt("subtotal"));
+            list.add(expense);
+        }
+        return list;
+    }
+
+    static public void insert(Expense expense) {
+        try {
+            String sql = "INSERT INTO " + TABLE_NAME + " (category, quantity, subtotal) VALUES( ?, ?, ?)";
+            PreparedStatement statement = null;
+            statement = con.prepareStatement(sql);
+            statement.setString(1, expense.getCategory());
+            statement.setInt(2, expense.getQuantity());
+            statement.setInt(3, expense.getSubtotal());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

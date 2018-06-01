@@ -1,7 +1,12 @@
 DROP TABLE tutorial IF EXISTS;
-CREATE TABLE tutorial (id INT NOT NULL, category VARCHAR(50) NOT NULL, quantity INT NOT NULL, subtotal INT NOT NULL, PRIMARY KEY (id));
+CREATE TABLE tutorial (
+    id INTEGER IDENTITY PRIMARY KEY,
+    category VARCHAR(50) NOT NULL,
+    quantity INT NOT NULL,
+    subtotal INT NOT NULL
+);
 
-INSERT INTO tutorial  VALUES (1, 'Transportation', 6, 2400);
-INSERT INTO tutorial  VALUES (2, 'FOOD', 6, 15);
-INSERT INTO tutorial  VALUES (3, 'Lodging', 2, 160);
-INSERT INTO tutorial  VALUES (4, 'Entertainment', 1, 120);
+INSERT INTO tutorial (category, quantity, subtotal) VALUES ('Transportation', 10, 2400);
+INSERT INTO tutorial (category, quantity, subtotal) VALUES ('Food', 16, 15);
+INSERT INTO tutorial (category, quantity, subtotal) VALUES ('Lodging', 12, 160);
+INSERT INTO tutorial (category, quantity, subtotal) VALUES ('Entertainment', 11, 120);
