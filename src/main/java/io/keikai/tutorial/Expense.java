@@ -1,5 +1,7 @@
 package io.keikai.tutorial;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 public class Expense {
     private int id;
     private String category;
@@ -36,5 +38,10 @@ public class Expense {
 
     public void setSubtotal(int subtotal) {
         this.subtotal = subtotal;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.reflectionToString(this);
     }
 }
