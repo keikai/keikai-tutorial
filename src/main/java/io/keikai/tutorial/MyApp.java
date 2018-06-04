@@ -19,15 +19,11 @@ public class MyApp {
     public MyApp(Spreadsheet spreadsheet) {
         this.spreadsheet = spreadsheet;
         addEventListeners();
-        try {
-            fillExpense();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        fillExpense();
     }
 
-    private void fillExpense() throws SQLException {
-        List<Expense> list = SampleDataDao.queryAll();
+    private void fillExpense() {
+        List<Expense> list = SampleDataDao.queryByCategory();
         int row = 18;
         int col = 0;
         for (Expense expense : list) {
@@ -59,10 +55,11 @@ public class MyApp {
     private void addExpense() {
         int startingRow = 3;
         readExpense(startingRow, 1).thenAccept(expense -> {
-            System.out.println(">>" + expense);
             SampleDataDao.insert(expense);
         }).thenRun(() -> {
             spreadsheet.applyActiveWorksheet(0);
+            spreadsheet.setCurrentWorksheet(0); //apply active worksheet doesn't set current worksheet accordingly
+            fillExpense();
         });
     }
 

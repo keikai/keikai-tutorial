@@ -75,16 +75,21 @@ public class SampleDataDao {
         return list;
     }
 
-    static public List<Expense> queryByCategory() throws SQLException {
-        String sql = "SELECT category, sum(quantity), sum(subtotal) FROM " + TABLE_NAME + " GROUP BY category";
-        ResultSet resultSet = stmt.executeQuery(sql);
+    static public List<Expense> queryByCategory() {
+        String sql = "SELECT category, sum(quantity) as quantity, sum(subtotal) as subtotal FROM " + TABLE_NAME + " GROUP BY category";
         LinkedList<Expense> list = new LinkedList<>();
-        while (resultSet.next()) {
-            Expense expense = new Expense();
-            expense.setCategory(resultSet.getString("category"));
-            expense.setQuantity(resultSet.getInt("quantity"));
-            expense.setSubtotal(resultSet.getInt("subtotal"));
-            list.add(expense);
+        try {
+            ResultSet resultSet = null;
+            resultSet = stmt.executeQuery(sql);
+            while (resultSet.next()) {
+                Expense expense = new Expense();
+                expense.setCategory(resultSet.getString("category"));
+                expense.setQuantity(resultSet.getInt("quantity"));
+                expense.setSubtotal(resultSet.getInt("subtotal"));
+                list.add(expense);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return list;
     }
@@ -97,6 +102,7 @@ public class SampleDataDao {
             statement.setString(1, expense.getCategory());
             statement.setInt(2, expense.getQuantity());
             statement.setInt(3, expense.getSubtotal());
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
