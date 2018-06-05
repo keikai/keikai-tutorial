@@ -3,7 +3,7 @@ package io.keikai.tutorial;
 import io.keikai.client.api.*;
 import io.keikai.client.api.event.*;
 
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -50,36 +50,36 @@ public class MyApp {
         spreadsheet.addEventListener(Events.ON_CELL_CLICK, listener::accept);
     }
 
-
+    /**
+     * read expense in a specific range
+     */
     private void addExpense() {
-//        countExpenseRow();
-        int rowIndex = STARTING_ROW;
-
-        readExpense(rowIndex, CATEGORY_COLUMN).thenAccept(expense -> {
-            SampleDataDao.insert(expense);
-        }).thenRun(() -> {
-            clearExpense();
-            spreadsheet.applyActiveWorksheet(0);
+        List<CompletableFuture> futures = new LinkedList<>();
+        for (int rowIndex = STARTING_ROW ; rowIndex < STARTING_ROW + 4 ; rowIndex++) {
+            CompletableFuture readFuture = readExpense(rowIndex, CATEGORY_COLUMN).thenAccept(expense -> {
+                if (validate(expense)) {
+                    SampleDataDao.insert(expense);
+                }
+            });
+            futures.add(readFuture);
+        }
+        CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()])).thenRun(() -> {
             spreadsheet.setCurrentWorksheet(0) //apply active worksheet doesn't set current worksheet accordingly
                 .thenRun(() -> {
                     fillExpense();
-            });
+                });
+            clearExpense();
+            spreadsheet.applyActiveWorksheet(0);
         });
+    }
+
+
+    private boolean validate(Expense expense) {
+        return expense.getCategory()!= null;
     }
 
     private void clearExpense() {
-
-    }
-
-    /**
-     * count the number of expense that a user inputs in the sheet in the specified range
-     */
-    private void countExpenseRow() {
-        int lastRow = STARTING_ROW; //the last row that contains expense record
-
-        spreadsheet.loadActiveWorksheet().thenAccept(worksheet -> {
-            worksheet.loadLastRow().thenAccept(integer -> System.out.println(integer));
-        });
+        System.out.println("clear");
     }
 
     private CompletableFuture<Expense> readExpense(int row, int col) {
@@ -96,10 +96,7 @@ public class MyApp {
         subtotalLoader.thenAccept(rangeValue -> {
             expense.setSubtotal(rangeValue.getCellValue().getDoubleValue().intValue());
         });
-        return CompletableFuture.allOf(categoryLoader, subtotalLoader).thenApply(aVoid -> {
-            System.out.println(expense);
-            return expense;
-        });
+        return CompletableFuture.allOf(categoryLoader, subtotalLoader).thenApply(aVoid -> expense);
     }
 
     private boolean isAddButtonClicked(int sheetIndex, Range range) {
