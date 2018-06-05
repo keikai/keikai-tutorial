@@ -3,18 +3,16 @@ package io.keikai.tutorial;
 import io.keikai.client.api.*;
 import io.keikai.client.api.event.*;
 
-import java.awt.*;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
 
 /**
  * implement the application logic
  */
 public class MyApp {
     private Spreadsheet spreadsheet;
-    private int categoryColumn = 1;
+    private final int CATEGORY_COLUMN = 1;
+    private final int STARTING_ROW = 3; //the row index that a user should start to input the expense record
 
     public MyApp(Spreadsheet spreadsheet) {
         this.spreadsheet = spreadsheet;
@@ -40,6 +38,7 @@ public class MyApp {
     private void addEventListeners() {
         ExceptionalConsumer<RangeEvent> listener = (event) -> {
             spreadsheet.loadActiveWorksheet().thenAccept(worksheet -> {
+//            event.getRange().loadWorksheet().thenAccept(worksheet -> {
                 if (isAddButtonClicked(worksheet.getIndex(), event.getRange())) {
                     spreadsheet.applyActiveWorksheet(1);
                     spreadsheet.setCurrentWorksheet(1); //apply active worksheet doesn't set current worksheet accordingly
@@ -53,13 +52,33 @@ public class MyApp {
 
 
     private void addExpense() {
-        int startingRow = 3;
-        readExpense(startingRow, 1).thenAccept(expense -> {
+//        countExpenseRow();
+        int rowIndex = STARTING_ROW;
+
+        readExpense(rowIndex, CATEGORY_COLUMN).thenAccept(expense -> {
             SampleDataDao.insert(expense);
         }).thenRun(() -> {
+            clearExpense();
             spreadsheet.applyActiveWorksheet(0);
-            spreadsheet.setCurrentWorksheet(0); //apply active worksheet doesn't set current worksheet accordingly
-            fillExpense();
+            spreadsheet.setCurrentWorksheet(0) //apply active worksheet doesn't set current worksheet accordingly
+                .thenRun(() -> {
+                    fillExpense();
+            });
+        });
+    }
+
+    private void clearExpense() {
+
+    }
+
+    /**
+     * count the number of expense that a user inputs in the sheet in the specified range
+     */
+    private void countExpenseRow() {
+        int lastRow = STARTING_ROW; //the last row that contains expense record
+
+        spreadsheet.loadActiveWorksheet().thenAccept(worksheet -> {
+            worksheet.loadLastRow().thenAccept(integer -> System.out.println(integer));
         });
     }
 
