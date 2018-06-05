@@ -40,7 +40,7 @@ public class BaseServlet extends HttpServlet {
         Settings settings = Settings.DEFAULT_SETTINGS.clone();
         settings.set(Settings.Key.SPREADSHEET_CONFIG, Maps.toMap("toolbar", getToolBarConfig()));
 
-        spreadsheet = Keikai.newClient(Configuration.INTERNAL_KEIKAI_SERVER, settings);
+        spreadsheet = Keikai.newClient(Configuration.INTERNAL_KEIKAI_SERVER, settings);//TODO connect to alternative address
         String keikaiJs = spreadsheet.getURI("spreadsheet"); // pass the anchor DOM element id for rendering keikai
         HttpSession session = ((HttpServletRequest) request).getSession();
         session.setAttribute(Configuration.KEIKAI_JS, keikaiJs);

@@ -47,10 +47,6 @@ public class EditorServlet extends BaseServlet {
         req.getRequestDispatcher("/editor.jsp").forward(req, resp);
     }
 
-    private boolean isAction(HttpServletRequest request, String action) {
-        return request.getPathInfo().endsWith(action);
-    }
-
     @Override
     protected void initSpreadsheet(ServletRequest request) {
         super.initSpreadsheet(request);
@@ -77,6 +73,5 @@ public class EditorServlet extends BaseServlet {
         };
 
         spreadsheet.addEventListener(Events.ON_AUX_ACTION, listener::accept);
-
     }
 }
