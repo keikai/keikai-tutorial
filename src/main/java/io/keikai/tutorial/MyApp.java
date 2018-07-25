@@ -12,6 +12,7 @@ public class MyApp {
     private Spreadsheet spreadsheet;
     private final int CATEGORY_COLUMN = 1;
     private final int STARTING_ROW = 3; //the row index that a user should start to input the expense record
+    private int nExpense = 0; // number of user-input expense
 
     public MyApp(Spreadsheet spreadsheet) {
         this.spreadsheet = spreadsheet;
@@ -39,7 +40,7 @@ public class MyApp {
             if (isAddButtonClicked(event.getWorksheet().getIndex(), event.getRange())) {
                 spreadsheet.setActiveWorksheet(1); //switch to expense sheet
             } else if (isDoneButtonClicked(event.getWorksheet().getIndex(), event.getRange())) {
-                addExpense();
+                saveExpense();
                 spreadsheet.setActiveWorksheet(0);
                 loadExpenseToSheet();
             }
@@ -50,25 +51,31 @@ public class MyApp {
     /**
      * save expense records in a specific range
      */
-    private void addExpense() {
+    private void saveExpense() {
         for (int rowIndex = STARTING_ROW; rowIndex < STARTING_ROW + 4; rowIndex++) {
             Expense expense = readExpense(rowIndex, CATEGORY_COLUMN);
             if (validate(expense)) {
                 SampleDataDao.insert(expense);
+                nExpense++;
             } else {
                 break;
             }
         }
-        clearExpense();
+        clearInputExpense();
     }
 
 
     private boolean validate(Expense expense) {
-        return expense.getCategory() != null;
+        return expense.getCategory() != null
+                && expense.getQuantity() > 0
+                && expense.getSubtotal() > 0;
     }
 
-    private void clearExpense() {
-        System.out.println("clear");
+    private void clearInputExpense() {
+        for (int rowIndex = STARTING_ROW; rowIndex <= STARTING_ROW + nExpense; rowIndex++) {
+            spreadsheet.getRange(rowIndex, 0, 1, 4).clearContents();
+        }
+        nExpense = 0;
     }
 
     private Expense readExpense(int row, int col) {
