@@ -71,4 +71,7 @@ If you fail to import an xlsx file, please kindly send it to [info@zkoss.org](ma
 ## Working with a Database
 It shows you how to import data from a database, and you can edit values in cells then save them back to the database. We just demonstrate one possible way, you can definitely load data from any other data repository by yourselves. 
 
+* This project uses [HSQLDB](http://hsqldb.org/)
+
 Please visit [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/db) with you browser.
+
