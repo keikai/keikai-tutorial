@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.logging.*;
 
 public class Configuration {
-    public static final String INTERNAL_KEIKAI_SERVER = "http://localhost:8888";
+    public static final String DEFAULT_KEIKAI_SERVER = "http://localhost:8888";
     public static final String SPREADSHEET = "spreadsheet"; //the key to store Spreadsheet component
     public static final String DEFAULT_FILE_FOLDER = "export";
     public static final String INTERNAL_FILE_FOLDER = "book";
