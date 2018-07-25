@@ -1,5 +1,6 @@
 package io.keikai.tutorial.web;
 
+import io.keikai.client.api.*;
 import io.keikai.tutorial.*;
 
 import javax.servlet.*;
@@ -21,14 +22,16 @@ public class AppServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        initSpreadsheet(req);
+        try {
+            initSpreadsheet(req);
+            spreadsheet.imports(DEFAULT_XLSX, defaultFile);
+            new MyApp(spreadsheet);
+        } catch (DuplicateNameException e) {
+            throw new IOException(e);
+        } catch (AbortedException e) {
+            throw new IOException(e);
+        }
         req.getRequestDispatcher("/app.jsp").forward(req, resp);
     }
-    
-    @Override
-    protected void initSpreadsheet(ServletRequest request) {
-        super.initSpreadsheet(request);
-        spreadsheet.imports(DEFAULT_XLSX, defaultFile);
-        new MyApp(spreadsheet);
-    }
+
 }

@@ -1,5 +1,6 @@
 package io.keikai.tutorial.web;
 
+import io.keikai.client.api.*;
 import io.keikai.client.api.event.*;
 import io.keikai.client.api.ui.AuxAction;
 import io.keikai.tutorial.*;
@@ -44,16 +45,16 @@ public class EditorServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         initSpreadsheet(req);
+        try {
+            spreadsheet.imports(DEFAULT_XLSX, defaultFile);
+            addToolbarEventListeners();
+        } catch (DuplicateNameException e) {
+            throw new IOException(e);
+        } catch (AbortedException e) {
+            throw new IOException(e);
+        }
         req.getRequestDispatcher("/editor.jsp").forward(req, resp);
     }
-
-    @Override
-    protected void initSpreadsheet(ServletRequest request) {
-        super.initSpreadsheet(request);
-        addToolbarEventListeners();
-        spreadsheet.imports(DEFAULT_XLSX, defaultFile);
-    }
-
 
     protected void addToolbarEventListeners() {
         ExceptionalConsumer listener = (event) -> {
@@ -61,15 +62,16 @@ public class EditorServlet extends BaseServlet {
             final String action = auxActionEvent.getAction();
             if (action.equals("saveBook")) {
 
-            } else if (action.equals(AuxAction.NEW_BOOK.getAction())) {
-                spreadsheet.containsWorkbook(BLANK_XLSX).thenAccept(existed -> {
-                    spreadsheet.deleteWorkbook(BLANK_XLSX);
-                    spreadsheet.imports(BLANK_XLSX, defaultBookFolder).exceptionally(throwable -> {
-                        throwable.printStackTrace();
-                        return null;
-                    });
-                });
             }
+//            else if (action.equals(AuxAction.NEW_BOOK.getAction())) {
+//                spreadsheet.containsWorkbook(BLANK_XLSX).thenAccept(existed -> {
+//                    spreadsheet.deleteWorkbook(BLANK_XLSX);
+//                    spreadsheet.imports(BLANK_XLSX, defaultBookFolder).exceptionally(throwable -> {
+//                        throwable.printStackTrace();
+//                        return null;
+//                    });
+//                });
+//            }
         };
 
         spreadsheet.addEventListener(Events.ON_AUX_ACTION, listener::accept);
