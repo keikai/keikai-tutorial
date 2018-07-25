@@ -43,7 +43,10 @@ You can run this project with a gradle wrapper without installing anything in ad
 
 `gradlew appRun`
 
-Then visit [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) with your browser.
+Then visit the following URL with your browser:
+
+* [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) 
+* [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) 
 
 
 # Supported Browser

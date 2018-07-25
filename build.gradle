@@ -1,5 +1,6 @@
 apply plugin: 'war'
 apply plugin: 'org.akhikhl.gretty'
+apply plugin: 'idea'
 
 //gretty
 buildscript {
@@ -21,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compile "io.keikai:keikai-java-client:0.8.0-SNAPSHOT"
+    compile "io.keikai:keikai-java-client:1.0.0-alpha.1-SNAPSHOT"
     compile "org.webjars.bower:bootstrap:4.1.0"
     compile "org.webjars:jquery:3.3.1"
     compile "com.google.code.gson:gson:2.8.4"
@@ -33,8 +34,12 @@ dependencies {
     testCompile "junit:junit:4.12"
 }
 
-
-
+//https://docs.gradle.org/current/dsl/org.gradle.plugins.ide.idea.model.IdeaModule.html
+idea {
+    module {
+        downloadJavadoc = true
+    }
+}
 
 
 
