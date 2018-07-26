@@ -24,14 +24,14 @@ INFO: Rikulo Stream Server 1.7.0 starting on 0.0.0.0:8888
 
 Then keikai server starts up successfully at `localhost:8888`
 
-## Options
-### With different port and address
-`keikai  —port=9999 —address=192.168.1.1`
+# Keikai Server Options
+## With different port and address
+`./keikai  —port=9999 —address=192.168.1.1`
 
-### Help
+## Help
 For other options, you can check with the command:
 
-`keikai --help`
+`./keikai --help`
 
 # How to Run This Project
 You can run this project with a gradle wrapper without installing anything in advanced. Just run the following command in your command line interface:
@@ -48,6 +48,10 @@ Then visit the following URL with your browser:
 * [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) 
 * [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) 
 
+## Connect to Different Keikai Server Address
+By default, this project connect to a Keikai server at `localhost:8888`. If you want to connect to a different address, please append a query string with key `server`:
+ 
+ `http://localhost:8080/tutorial/editor?server=10.1.1.1:8888`
 
 # Supported Browser
 IE 11+, Chrome, Firefox
@@ -56,9 +60,6 @@ IE 11+, Chrome, Firefox
 # Supported File Format
 Microsoft Excel Open XML Document (**.xlsx**) only
 
-
-# Project Architecture
-TODO a image
 
 
 # Scenarios to Demonstrate
@@ -75,3 +76,9 @@ It shows you how to import data from a database, and you can edit values in cell
 
 Please visit [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/db) with you browser.
 
+
+# Project Architecture
+![architecture.png](architecture.png)
+
+* When calling Keikai Java client API, it communicates with Keikai server.
+* Keikai server communicates with Keikai client in a browser to render a sheet and exchange data.
