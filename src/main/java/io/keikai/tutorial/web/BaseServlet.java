@@ -11,11 +11,12 @@ import javax.servlet.http.*;
 import static io.keikai.tutorial.Configuration.SPREADSHEET;
 
 /**
- * contains common methods.
+ * accept "server" parameter e.g. http://localhost:8080?server=10.1.1.1:8888
  */
 public class BaseServlet extends HttpServlet {
     protected Spreadsheet spreadsheet; //session scope variable
     static protected Gson gson;
+    private String keikaiServerAddress = Configuration.DEFAULT_KEIKAI_SERVER;
 
     static {
         GsonBuilder builder = new GsonBuilder();
@@ -31,16 +32,23 @@ public class BaseServlet extends HttpServlet {
         return spreadsheet;
     }
 
+    protected void determineServerAddress(String serverAddress) {
+        if (serverAddress != null){
+            keikaiServerAddress = "http://" + serverAddress;
+        }
+    }
+
     /**
      * store spreadsheet and its javascript in a session
      *
      * @param request
      */
     protected void initSpreadsheet(ServletRequest request) {
+        determineServerAddress(request.getParameter("server"));
         Settings settings = Settings.DEFAULT_SETTINGS.clone();
         settings.set(Settings.Key.SPREADSHEET_CONFIG, Maps.toMap("toolbar", getToolBarConfig()));
+        spreadsheet = Keikai.newClient(keikaiServerAddress, settings);
 
-        spreadsheet = Keikai.newClient(Configuration.DEFAULT_KEIKAI_SERVER, settings);//TODO connect to alternative address
         String keikaiJs = spreadsheet.getURI("spreadsheet"); // pass the anchor DOM element id for rendering keikai
         HttpSession session = ((HttpServletRequest) request).getSession();
         session.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
