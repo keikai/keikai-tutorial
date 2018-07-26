@@ -17,6 +17,7 @@
     <div class="container-fluid">
         <div class="toolbar">
             <image src="images/keikai-logo.png" style="height: 45px; display: inline-block" />
+            <%@ include file="server-address.jsp" %>
             <div class="alert" role="alert" style="display:none">
             </div>
         </div>
