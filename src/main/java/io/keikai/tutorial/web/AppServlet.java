@@ -10,21 +10,16 @@ import java.io.*;
 
 @WebServlet("/app/*")
 public class AppServlet extends BaseServlet {
-    private static final String DEFAULT_XLSX = "app.xlsx";
-    private File defaultFile;
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        defaultFile = new File(getServletContext().getRealPath("/WEB-INF" +
-                File.separator + Configuration.INTERNAL_FILE_FOLDER + File.separator + DEFAULT_XLSX));
+    public AppServlet(){
+        this.defaultXlsx = "app.xlsx";
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             initSpreadsheet(req);
-            spreadsheet.imports(DEFAULT_XLSX, defaultFile);
+            spreadsheet.imports(defaultXlsx, defaultFile);
             new MyApp(spreadsheet);
         } catch (DuplicateNameException e) {
             throw new IOException(e);

@@ -4,8 +4,10 @@ import com.google.gson.*;
 import io.keikai.client.api.*;
 import io.keikai.tutorial.Configuration;
 
-import javax.servlet.ServletRequest;
+import javax.servlet.*;
 import javax.servlet.http.*;
+
+import java.io.File;
 
 import static io.keikai.tutorial.Configuration.SPREADSHEET;
 
@@ -14,13 +16,16 @@ import static io.keikai.tutorial.Configuration.SPREADSHEET;
  */
 public class BaseServlet extends HttpServlet {
     protected Spreadsheet spreadsheet; //session scope variable
-    static protected Gson gson;
-    private String keikaiServerAddress = Configuration.DEFAULT_KEIKAI_SERVER;
+    protected String keikaiServerAddress = Configuration.DEFAULT_KEIKAI_SERVER;
+    protected File defaultFileFolder;
+    protected File defaultFile;
+    protected String defaultXlsx = "welcome.xlsx";
 
-    static {
-        GsonBuilder builder = new GsonBuilder();
-        builder.setPrettyPrinting();
-        gson = builder.create();
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        defaultFileFolder = new File(getServletContext().getRealPath("/WEB-INF" + File.separator + Configuration.INTERNAL_FILE_FOLDER));
+        defaultFile = new File(defaultFileFolder, defaultXlsx);
     }
 
     /**
@@ -43,7 +48,7 @@ public class BaseServlet extends HttpServlet {
     }
 
     /**
-     * store spreadsheet and its javascript in a session
+     * Create {@link Spreadsheet} object and Keikai client javascript URL. Store spreadsheet and its javascript in a session
      *
      * @param request
      */

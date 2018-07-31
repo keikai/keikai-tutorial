@@ -12,14 +12,14 @@ import java.io.*;
 
 @WebServlet("/editor/*")
 public class EditorServlet extends BaseServlet {
-    private static final String DEFAULT_XLSX = "welcome.xlsx";
-    private File defaultFile;
+
+    public EditorServlet(){
+        this.defaultXlsx = "welcome.xlsx";
+    }
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        defaultFile = new File(getServletContext().getRealPath("/WEB-INF" +
-                File.separator + Configuration.INTERNAL_FILE_FOLDER + File.separator + DEFAULT_XLSX));
 //        Configuration.enableSocketIOLog();
     }
 
@@ -28,7 +28,7 @@ public class EditorServlet extends BaseServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         initSpreadsheet(req);
         try {
-            spreadsheet.imports(DEFAULT_XLSX, defaultFile);
+            spreadsheet.imports(defaultXlsx, defaultFile);
         } catch (DuplicateNameException e) {
             throw new IOException(e);
         } catch (AbortedException e) {
