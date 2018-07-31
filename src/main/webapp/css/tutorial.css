@@ -1,0 +1,7 @@
+html, body, .container-fluid{
+    height: 100%;
+}
+
+.header{
+   padding: 10px 0 10px 0;
+}
