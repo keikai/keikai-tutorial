@@ -34,7 +34,7 @@ For other options, you can check with the command:
 `./keikai --help`
 
 # How to Run This Project
-You can run this project with a gradle wrapper without installing anything in advanced. Just run the following command in your command line interface:
+You can run this project with a gradle wrapper without installing anything in advanced (gradle wrapper will install necessary files for you). Just run the following command in your command line interface:
 * Linux / Mac
 
 `./gradlew appRun`
@@ -48,13 +48,14 @@ Then visit the following URL with your browser:
 * [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) 
 * [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) 
 
-## Connect to Different Keikai Server Address
-By default, this project connect to a Keikai server at `localhost:8888`. If you want to connect to a different address, please append a query string with key `server`:
+
+## Connect to a Different Keikai Server Address
+By default, this project connects to a Keikai server at `localhost:8888`. If you want to connect to a different address, please append a query string with key `server`:
  
  `http://localhost:8080/tutorial/editor?server=10.1.1.1:8888`
 
 # Supported Browser
-IE 11+, Chrome, Firefox
+Chrome, Firefox, IE 11+
 
 
 # Supported File Format
@@ -72,7 +73,9 @@ If you fail to import an xlsx file, please kindly send it to [info@zkoss.org](ma
 ## Working with a Database
 It shows you how to import data from a database, and you can edit values in cells then save them back to the database. We just demonstrate one possible way, you can definitely load data from any other data repository by yourselves. 
 
-* This project uses [HSQLDB](http://hsqldb.org/)
+
+
+* This project saves data into [HSQLDB](http://hsqldb.org/)
 
 Please visit [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/db) with you browser.
 

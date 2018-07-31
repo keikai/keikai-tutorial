@@ -17,18 +17,6 @@ public class SampleDataDao {
     static private Connection con;
     static Statement stmt;
 
-    public static void main(String[] args) {
-        try {
-            con = DriverManager.getConnection(HSQLDB_CONNECTION_STRING, "SA", "");
-            stmt = con.createStatement();
-            executeSqlFile();
-            queryAll();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     static public void initDatabase() {
         try {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
