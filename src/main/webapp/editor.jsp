@@ -8,13 +8,11 @@
     <script id="keikai" async defer src="${keikaiJs}"></script>
     <title>Keikai Editor</title>
 </head>
-<body >
-    <div class="container-fluid">
+<body>
+    <div class="myapp">
         <div class="header">
             <image src="images/keikai-logo.png" style="height: 45px; display: inline-block" />
             <%@ include file="server-address.jsp" %>
-            <div class="alert" role="alert" style="display:none">
-            </div>
         </div>
         <div id="spreadsheet" style="height: 90%" >
         </div>
