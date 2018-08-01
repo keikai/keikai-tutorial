@@ -10,10 +10,7 @@
 </head>
 <body>
     <div class="myapp">
-        <div class="header">
-            <image src="images/keikai-logo.png" style="height: 45px; display: inline-block" />
-            <%@ include file="server-address.jsp" %>
-        </div>
+        <%@ include file="header.jsp" %>
         <div id="spreadsheet" data-show-toolbar="false" style="height: 90%" >
         </div>
     </div>
