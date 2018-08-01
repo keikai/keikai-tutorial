@@ -67,7 +67,7 @@ Microsoft Excel Open XML Document (**.xlsx**) only
 ## Excel File Editor
 You can upload an Excel file and edit it in a browser. Please visit [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) with you browser.
 
-If you fail to import an xlsx file, please kindly send it to [info@zkoss.org](mailto:info@zkoss.org) 
+If you fail to import an xlsx file, please kindly send it to [info@keikai.io](mailto:info@keikai.io) 
 
 
 ## Working with a Database
