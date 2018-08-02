@@ -20,6 +20,9 @@ public class MyApp {
         loadExpenseToSheet();
     }
 
+    /**
+     * Load expense list from the database to a sheet
+     */
     private void loadExpenseToSheet() {
         List<Expense> list = SampleDataDao.queryByCategory();
         int row = 18;
@@ -36,20 +39,23 @@ public class MyApp {
     }
 
     private void addEventListeners() {
-        ExceptionalConsumer<RangeEvent> listener = (event) -> {
-            if (isAddButtonClicked(event.getWorksheet().getIndex(), event.getRange())) {
-                spreadsheet.setActiveWorksheet(1); //switch to expense sheet
-            } else if (isDoneButtonClicked(event.getWorksheet().getIndex(), event.getRange())) {
-                saveExpense();
-                spreadsheet.setActiveWorksheet(0);
-                loadExpenseToSheet();
+        RangeEventListener rangeEventListener = new RangeEventListener() {
+            @Override
+            public void onEvent(RangeEvent rangeEvent) throws Exception {
+                if (isAddButtonClicked(rangeEvent.getWorksheet().getIndex(), rangeEvent.getRange())) {
+                    spreadsheet.setActiveWorksheet(1); //switch to expense sheet
+                } else if (isDoneButtonClicked(rangeEvent.getWorksheet().getIndex(), rangeEvent.getRange())) {
+                    saveExpense();
+                    spreadsheet.setActiveWorksheet(0);
+                    loadExpenseToSheet();
+                }
             }
         };
-        spreadsheet.addEventListener(Events.ON_CELL_CLICK, listener::accept);
+        spreadsheet.addEventListener(Events.ON_CELL_CLICK, rangeEventListener);
     }
 
     /**
-     * save expense records in a specific range
+     * save expense list in a specific range into the database
      */
     private void saveExpense() {
         for (int rowIndex = STARTING_ROW; rowIndex < STARTING_ROW + 4; rowIndex++) {
