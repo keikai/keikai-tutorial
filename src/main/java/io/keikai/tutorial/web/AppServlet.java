@@ -18,7 +18,7 @@ public class AppServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(req, resp);
+        new MyApp(spreadsheet);
         req.getRequestDispatcher("/app.jsp").forward(req, resp);
     }
-
 }
