@@ -50,11 +50,14 @@ public class BaseServlet extends HttpServlet {
      */
     protected void initSpreadsheet(ServletRequest request) {
         determineServerAddress(request.getParameter("server"));
-        spreadsheet = Keikai.newClient(keikaiServerAddress);
 
+        spreadsheet = Keikai.newClient(keikaiServerAddress, getSettings());
         String keikaiJs = spreadsheet.getURI("spreadsheet"); // pass the anchor DOM element id for rendering keikai
         request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
     }
 
+    protected Settings getSettings() {
+        return Settings.DEFAULT_SETTINGS;
+    }
 
 }
