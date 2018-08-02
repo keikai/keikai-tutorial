@@ -17,15 +17,7 @@ public class AppServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            initSpreadsheet(req);
-            spreadsheet.imports(defaultXlsx, defaultFile);
-            new MyApp(spreadsheet);
-        } catch (DuplicateNameException e) {
-            throw new IOException(e);
-        } catch (AbortedException e) {
-            throw new IOException(e);
-        }
+        super.doGet(req, resp);
         req.getRequestDispatcher("/app.jsp").forward(req, resp);
     }
 

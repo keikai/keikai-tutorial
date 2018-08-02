@@ -4,6 +4,7 @@ import io.keikai.client.api.*;
 import io.keikai.client.api.event.*;
 import io.keikai.client.api.ui.AuxAction;
 import io.keikai.tutorial.*;
+import io.keikai.util.Maps;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -18,22 +19,8 @@ public class EditorServlet extends BaseServlet {
     }
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-//        Configuration.enableSocketIOLog();
-    }
-
-
-    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        initSpreadsheet(req);
-        try {
-            spreadsheet.imports(defaultXlsx, defaultFile);
-        } catch (DuplicateNameException e) {
-            throw new IOException(e);
-        } catch (AbortedException e) {
-            throw new IOException(e);
-        }
+        super.doGet(req, resp);
         req.getRequestDispatcher("/editor.jsp").forward(req, resp);
     }
 

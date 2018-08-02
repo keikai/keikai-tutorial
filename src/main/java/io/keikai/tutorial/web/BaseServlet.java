@@ -6,9 +6,7 @@ import io.keikai.tutorial.Configuration;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import java.io.File;
-
-import static io.keikai.tutorial.Configuration.SPREADSHEET;
+import java.io.*;
 
 /**
  * accept "server" parameter e.g. http://localhost:8080?server=10.1.1.1:8888
@@ -25,19 +23,18 @@ public class BaseServlet extends HttpServlet {
         super.init(config);
         defaultFileFolder = new File(getServletContext().getRealPath("/WEB-INF" + File.separator + Configuration.INTERNAL_FILE_FOLDER));
         defaultFile = new File(defaultFileFolder, defaultXlsx);
+//        Configuration.enableSocketIOLog();
     }
 
-    /**
-     * get Spreadsheet from session scope first or create a new one
-     * @param request
-     * @return
-     */
-    protected Spreadsheet getSpreadsheet(ServletRequest request) {
-        spreadsheet = (Spreadsheet) ((HttpServletRequest) request).getSession().getAttribute(SPREADSHEET);
-        if (spreadsheet == null) {
-            initSpreadsheet(request);
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        initSpreadsheet(req);
+        try {
+            spreadsheet.importAndReplace(defaultXlsx, defaultFile);
+        } catch (AbortedException e) {
+            throw new IOException(e);
         }
-        return spreadsheet;
     }
 
     protected void determineServerAddress(String serverAddress) {
@@ -56,9 +53,7 @@ public class BaseServlet extends HttpServlet {
         spreadsheet = Keikai.newClient(keikaiServerAddress);
 
         String keikaiJs = spreadsheet.getURI("spreadsheet"); // pass the anchor DOM element id for rendering keikai
-        HttpSession session = ((HttpServletRequest) request).getSession();
-        session.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
-        session.setAttribute(Configuration.SPREADSHEET, spreadsheet);
+        request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
     }
 
 
