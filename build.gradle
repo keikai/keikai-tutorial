@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compile "io.keikai:keikai-java-client:1.0.0-alpha.2-SNAPSHOT"
+    compile "io.keikai:keikai-java-client:1.0.0-alpha.1-Eval"
     compile "commons-io:commons-io:2.5"
     compile "org.hsqldb:hsqldb:2.3.4"
     compile "org.hsqldb:sqltool:2.3.4"
