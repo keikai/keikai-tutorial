@@ -12,7 +12,7 @@ import java.io.*;
  * accept "server" parameter e.g. http://localhost:8080?server=10.1.1.1:8888
  */
 public class BaseServlet extends HttpServlet {
-    protected Spreadsheet spreadsheet; //session scope variable
+    protected Spreadsheet spreadsheet;
     protected String keikaiServerAddress = Configuration.DEFAULT_KEIKAI_SERVER;
     protected File defaultFileFolder;
     protected File defaultFile;
@@ -52,7 +52,8 @@ public class BaseServlet extends HttpServlet {
         determineServerAddress(request.getParameter("server"));
 
         spreadsheet = Keikai.newClient(keikaiServerAddress, getSettings());
-        String keikaiJs = spreadsheet.getURI("spreadsheet"); // pass the anchor DOM element id for rendering keikai
+        // pass the anchor DOM element id for rendering keikai
+        String keikaiJs = spreadsheet.getURI("spreadsheet");
         request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
     }
 
