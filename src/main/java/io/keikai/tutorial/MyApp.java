@@ -86,7 +86,9 @@ public class MyApp {
 
     private Expense readExpense(int row, int col) {
         Expense expense = new Expense();
-        expense.setCategory(spreadsheet.getRange(row, col).getValue());
+        getCellValue(spreadsheet.getRange(row, col)).ifPresent(cellValue -> {
+            expense.setCategory(cellValue.getStringValue());
+        });
         getCellValue(spreadsheet.getRange(row, col + 1)).ifPresent(cellValue -> {
             expense.setQuantity(cellValue.getDoubleValue().intValue());
         });
