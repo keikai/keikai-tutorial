@@ -87,3 +87,17 @@ This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is jus
 
 * When calling Keikai Java client API, it communicates with Keikai server.
 * Keikai server communicates with Keikai client in a browser to render a sheet and exchange data.
+
+
+# Import Larger Files
+Importing larger file requires larger heap size. Here are suggested minimal heap size for an application server.
+
+| File size | Suggested Heap Size| 
+| --------- | ---------- |
+| 10 MB     | 1.5G          |
+| 20 MB     | 1.9G          |
+| 40 MB     | 2.5G          |
+
+You can increase the heap size with JVM arguments:
+
+`gradle appRun -Dorg.gradle.jvmargs=-Xmx4g`
