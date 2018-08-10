@@ -5,8 +5,8 @@ import io.keikai.tutorial.Configuration;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
-
 import java.io.*;
+import java.util.*;
 
 /**
  * accept "server" parameter e.g. http://localhost:8080?server=10.1.1.1:8888
@@ -55,6 +55,19 @@ public class BaseServlet extends HttpServlet {
         // pass the anchor DOM element id for rendering keikai
         String keikaiJs = spreadsheet.getURI("spreadsheet");
         request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
+        putIntoSession(((HttpServletRequest)request).getSession());
+    }
+
+    /**
+     * put {@link Spreadsheet} object to a session to close it when the session expires.
+     */
+    private void putIntoSession(HttpSession session) {
+        List<Spreadsheet> list = (List<Spreadsheet>)session.getAttribute(Configuration.SPREADSHEETS);
+        if (list == null){
+            list = new LinkedList<Spreadsheet>();
+            session.setAttribute(Configuration.SPREADSHEETS, list);
+        }
+        list.add(spreadsheet);
     }
 
     protected Settings getSettings() {
