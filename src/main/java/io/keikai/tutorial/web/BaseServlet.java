@@ -1,6 +1,7 @@
 package io.keikai.tutorial.web;
 
 import io.keikai.client.api.*;
+import io.keikai.client.api.ui.UiActivity;
 import io.keikai.tutorial.Configuration;
 
 import javax.servlet.*;
@@ -56,6 +57,15 @@ public class BaseServlet extends HttpServlet {
         String keikaiJs = spreadsheet.getURI("spreadsheet");
         request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
         putIntoSession(((HttpServletRequest)request).getSession());
+        // close spreadsheet client to avoid memory leak
+        spreadsheet.setUiActivityCallback(new UiActivity() {
+            public void onConnect() {
+            }
+
+            public void onDisconnect() {
+                spreadsheet.close();
+            }
+        });
     }
 
     /**
