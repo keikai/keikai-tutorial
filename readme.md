@@ -92,11 +92,11 @@ This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is jus
 # Import Larger Files
 Importing larger file requires larger heap size. Here are suggested minimal heap size for an application server.
 
-| File size | Suggested Heap Size| 
-| --------- | ---------- |
-| 10 MB     | 1.5G          |
-| 20 MB     | 1.9G          |
-| 40 MB     | 2.5G          |
+| File size | Number of Cells| Suggested Heap Size| 
+| --------- | -------------- | ------------------ |
+| 10 MB     | 1.4 millions  | 1.5G  |
+| 20 MB     | 2.9 millions  | 1.9G  |
+| 40 MB     | 8.7 millions  | 2.5G  |
 
 You can increase the heap size with JVM arguments:
 
