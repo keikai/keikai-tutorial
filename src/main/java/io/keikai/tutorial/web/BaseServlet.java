@@ -7,7 +7,6 @@ import io.keikai.tutorial.Configuration;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
-import java.util.*;
 
 /**
  * accept "server" parameter e.g. http://localhost:8080?server=10.1.1.1:8888
@@ -38,7 +37,12 @@ public class BaseServlet extends HttpServlet {
         }
     }
 
-    protected void determineServerAddress(String serverAddress) {
+    /**
+     * determine Keikai server address according to the query string
+     * @param request
+     */
+    protected void determineServerAddress(ServletRequest request) {
+        String serverAddress = request.getParameter("server");
         if (serverAddress != null){
             keikaiServerAddress = "http://" + serverAddress;
         }
@@ -50,13 +54,10 @@ public class BaseServlet extends HttpServlet {
      * @param request
      */
     protected void initSpreadsheet(ServletRequest request) {
-        determineServerAddress(request.getParameter("server"));
+        determineServerAddress(request);
 
         spreadsheet = Keikai.newClient(keikaiServerAddress, getSettings());
-        // pass the anchor DOM element id for rendering keikai
-        String keikaiJs = spreadsheet.getURI("spreadsheet");
-        request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
-        // close spreadsheet client to avoid memory leak
+        // close spreadsheet Java client when a browser disconnect to keikai server to avoid memory leak
         spreadsheet.setUiActivityCallback(new UiActivity() {
             public void onConnect() {
             }
@@ -65,6 +66,9 @@ public class BaseServlet extends HttpServlet {
                 spreadsheet.close();
             }
         });
+        // pass the anchor DOM element id for rendering keikai
+        String keikaiJs = spreadsheet.getURI("spreadsheet");
+        request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
     }
 
     protected Settings getSettings() {

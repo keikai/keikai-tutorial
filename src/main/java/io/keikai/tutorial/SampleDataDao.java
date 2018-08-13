@@ -7,6 +7,9 @@ import java.net.URISyntaxException;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Create adn close a connection for every query.
+ */
 public class SampleDataDao {
     /**
      * http://hsqldb.org/doc/guide/dbproperties-chapt.html
