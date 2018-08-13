@@ -14,7 +14,11 @@ public class MyApp {
     private final int STARTING_ROW = 3; //the row index that a user should start to input the expense record
     private int nExpense = 0; // number of user-input expense
 
-    public MyApp(Spreadsheet spreadsheet) {
+    static public void initialize(Spreadsheet spreadsheet){
+        new MyApp(spreadsheet);
+    }
+
+    private MyApp(Spreadsheet spreadsheet) {
         this.spreadsheet = spreadsheet;
         addEventListeners();
         loadExpenseToSheet();

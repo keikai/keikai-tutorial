@@ -1,6 +1,5 @@
 package io.keikai.tutorial.web;
 
-import io.keikai.client.api.*;
 import io.keikai.tutorial.*;
 
 import javax.servlet.*;
@@ -18,7 +17,7 @@ public class AppServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(req, resp);
-        new MyApp(spreadsheet);
+        MyApp.initialize(spreadsheet);
         req.getRequestDispatcher("/app.jsp").forward(req, resp);
     }
 }
