@@ -56,7 +56,6 @@ public class BaseServlet extends HttpServlet {
         // pass the anchor DOM element id for rendering keikai
         String keikaiJs = spreadsheet.getURI("spreadsheet");
         request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
-        putIntoSession(((HttpServletRequest)request).getSession());
         // close spreadsheet client to avoid memory leak
         spreadsheet.setUiActivityCallback(new UiActivity() {
             public void onConnect() {
@@ -66,18 +65,6 @@ public class BaseServlet extends HttpServlet {
                 spreadsheet.close();
             }
         });
-    }
-
-    /**
-     * put {@link Spreadsheet} object to a session to close it when the session expires.
-     */
-    private void putIntoSession(HttpSession session) {
-        List<Spreadsheet> list = (List<Spreadsheet>)session.getAttribute(Configuration.SPREADSHEETS);
-        if (list == null){
-            list = new LinkedList<Spreadsheet>();
-            session.setAttribute(Configuration.SPREADSHEETS, list);
-        }
-        list.add(spreadsheet);
     }
 
     protected Settings getSettings() {
