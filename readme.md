@@ -79,6 +79,15 @@ This project shows you how you can pre-load an Excel template, and populate data
 
 To try out this App, please visit [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) with you browser. Follow the on-screen instructions and add a new expense to the 2nd page. The application will bring you back to the first page displaying updated numbers and charts. 
 
+
+
+![](app.png)
+
+* `AppServlet`: Works as a controller, handles HTTP requests. It calls `MyApp` to achieve business function.
+* `MyApp`: service layer. Implements application logic with Keikai Java client API. It relies on `SampleDataDao` to communicate (query/save) with the database.
+* `SampleDataDao`: persistence layer. Connects to HSQL database with JDBC. This DAO (Data Access Object) class is responsible for query and save expense data into the database. 
+
+
 This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is just an example, you can definitely load data from any other data source by yourselves. 
 
 
