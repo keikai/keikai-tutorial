@@ -1,6 +1,6 @@
 package io.keikai.tutorial.web;
 
-import io.keikai.tutorial.SampleDataDao;
+import io.keikai.tutorial.persistence.SampleDataDao;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebListener;

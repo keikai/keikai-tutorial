@@ -1,4 +1,4 @@
-package io.keikai.tutorial;
+package io.keikai.tutorial.app;
 
 import io.keikai.client.api.*;
 import io.keikai.client.api.event.*;

@@ -1,4 +1,4 @@
-package io.keikai.tutorial;
+package io.keikai.tutorial.persistence;
 
 import org.hsqldb.cmdline.*;
 
