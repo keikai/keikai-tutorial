@@ -29,6 +29,11 @@ public class MyApp {
         });
     }
 
+    /**
+     * pass the anchor DOM element ID for rendering a Keikai spreadsheet
+     * @param elementId
+     * @return
+     */
     public String getJavaScriptURI(String elementId) {
         return spreadsheet.getURI(elementId);
     }
@@ -101,25 +106,17 @@ public class MyApp {
 
     private Expense readExpense(int row, int col) {
         Expense expense = new Expense();
-        getCellValue(spreadsheet.getRange(row, col)).ifPresent(cellValue -> {
-            expense.setCategory(cellValue.getStringValue());
+        List cellValues = spreadsheet.getRange(row, col, 1, 4).getValues();
+        Optional.ofNullable(cellValues.get(0)).ifPresent( cellValue ->{
+            expense.setCategory(cellValue.toString());
         });
-        getCellValue(spreadsheet.getRange(row, col + 1)).ifPresent(cellValue -> {
-            expense.setQuantity(cellValue.getDoubleValue().intValue());
+        Optional.ofNullable(cellValues.get(1)).ifPresent( cellValue ->{
+            expense.setQuantity(((Number)cellValue).intValue());
         });
-        getCellValue(spreadsheet.getRange(row, col + 3)).ifPresent(cellValue -> {
-            expense.setSubtotal(cellValue.getDoubleValue().intValue());
+        Optional.ofNullable(cellValues.get(3)).ifPresent( cellValue ->{
+            expense.setSubtotal(((Number)cellValue).intValue());
         });
         return expense;
-    }
-
-    private Optional<CellValue> getCellValue(Range range){
-        CellValue value = range.getRangeValue().getCellValue();
-        if (range.getValue() == null){
-            return Optional.empty();
-        }else{
-            return Optional.of(value);
-        }
     }
 
     private boolean isAddButtonClicked(int sheetIndex, Range range) {
