@@ -1,7 +1,6 @@
 package io.keikai.tutorial.web;
 
 import io.keikai.client.api.*;
-import io.keikai.client.api.ui.UiActivity;
 import io.keikai.tutorial.Configuration;
 
 import javax.servlet.*;
@@ -12,7 +11,6 @@ import java.io.*;
  * accept "server" parameter e.g. http://localhost:8080?server=10.1.1.1:8888
  */
 public class BaseServlet extends HttpServlet {
-    protected Spreadsheet spreadsheet;
     protected String keikaiServerAddress = Configuration.DEFAULT_KEIKAI_SERVER;
     protected File defaultFileFolder;
     protected File defaultFile;
@@ -29,12 +27,7 @@ public class BaseServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        initSpreadsheet(req);
-        try {
-            spreadsheet.importAndReplace(defaultXlsx, defaultFile);
-        } catch (AbortedException e) {
-            throw new IOException(e);
-        }
+        determineServerAddress(req);
     }
 
     /**
@@ -47,32 +40,4 @@ public class BaseServlet extends HttpServlet {
             keikaiServerAddress = "http://" + serverAddress;
         }
     }
-
-    /**
-     * Create {@link Spreadsheet} object and Keikai client javascript URL. Store spreadsheet and its javascript in a session
-     *
-     * @param request
-     */
-    protected void initSpreadsheet(ServletRequest request) {
-        determineServerAddress(request);
-
-        spreadsheet = Keikai.newClient(keikaiServerAddress, getSettings());
-        // close spreadsheet Java client when a browser disconnect to keikai server to avoid memory leak
-        spreadsheet.setUiActivityCallback(new UiActivity() {
-            public void onConnect() {
-            }
-
-            public void onDisconnect() {
-                spreadsheet.close();
-            }
-        });
-        // pass the anchor DOM element id for rendering keikai
-        String keikaiJs = spreadsheet.getURI("spreadsheet");
-        request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
-    }
-
-    protected Settings getSettings() {
-        return Settings.DEFAULT_SETTINGS;
-    }
-
 }

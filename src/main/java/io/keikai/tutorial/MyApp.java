@@ -2,7 +2,9 @@ package io.keikai.tutorial;
 
 import io.keikai.client.api.*;
 import io.keikai.client.api.event.*;
+import io.keikai.client.api.ui.UiActivity;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -10,16 +12,29 @@ import java.util.*;
  */
 public class MyApp {
     private Spreadsheet spreadsheet;
-    private final int CATEGORY_COLUMN = 1;
-    private final int STARTING_ROW = 3; //the row index that a user should start to input the expense record
+    private static final int CATEGORY_COLUMN = 1;
+    private static final int STARTING_ROW = 3; //the row index that a user should start to input the expense record
     private int nExpense = 0; // number of user-input expense
 
-    static public void initialize(Spreadsheet spreadsheet){
-        new MyApp(spreadsheet);
+    public MyApp(String keikaiServerAddress) {
+        spreadsheet = Keikai.newClient(keikaiServerAddress);
+        // close spreadsheet Java client when a browser disconnect to keikai server to avoid memory leak
+        spreadsheet.setUiActivityCallback(new UiActivity() {
+            public void onConnect() {
+            }
+
+            public void onDisconnect() {
+                spreadsheet.close();
+            }
+        });
     }
 
-    private MyApp(Spreadsheet spreadsheet) {
-        this.spreadsheet = spreadsheet;
+    public String getJavaScriptURI(String elementId) {
+        return spreadsheet.getURI(elementId);
+    }
+
+    public void init(String bookName, File xlsxFile) throws FileNotFoundException, AbortedException {
+        spreadsheet.importAndReplace(bookName, xlsxFile);
         addEventListeners();
         loadExpenseToSheet();
     }
@@ -64,12 +79,11 @@ public class MyApp {
     private void saveExpense() {
         for (int rowIndex = STARTING_ROW; rowIndex < STARTING_ROW + 4; rowIndex++) {
             Expense expense = readExpense(rowIndex, CATEGORY_COLUMN);
-            if (validate(expense)) {
-                SampleDataDao.insert(expense);
-                nExpense++;
-            } else {
+            if (!validate(expense)) {
                 break;
             }
+            SampleDataDao.insert(expense);
+            nExpense++;
         }
         clearInputExpense();
     }
@@ -82,10 +96,7 @@ public class MyApp {
     }
 
     private void clearInputExpense() {
-        for (int rowIndex = STARTING_ROW; rowIndex <= STARTING_ROW + nExpense; rowIndex++) {
-            spreadsheet.getRange(rowIndex, 0, 1, 4).clearContents();
-        }
-        nExpense = 0;
+        spreadsheet.getRange(STARTING_ROW, 0, nExpense, 4).clearContents();
     }
 
     private Expense readExpense(int row, int col) {
