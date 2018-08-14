@@ -29,6 +29,6 @@ public class EditorServlet extends BaseServlet {
         } catch (AbortedException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("/editor.jsp").forward(request, resp);
+        request.getRequestDispatcher("/myeditor/editor.jsp").forward(request, resp);
     }
 }

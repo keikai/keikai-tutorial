@@ -29,6 +29,6 @@ public class AppServlet extends BaseServlet {
         } catch (AbortedException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("/app.jsp").forward(request, resp);
+        request.getRequestDispatcher("/myapp/app.jsp").forward(request, resp);
     }
 }

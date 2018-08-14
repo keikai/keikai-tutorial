@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="myapp">
-        <%@ include file="header.jsp" %>
+        <%@ include file="../header.jsp" %>
         <div id="spreadsheet" data-show-toolbar="false" style="height: 90%" >
         </div>
     </div>
