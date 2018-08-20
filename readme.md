@@ -1,5 +1,5 @@
 # Keikai Tutorial
-[Keikai](https://keikai.io/) is a web spreadsheet component designed for big data. This project demonstrates how you can use Keikai to build an application with its Java client API. 
+[Keikai](https://keikai.io/) is a web spreadsheet designed for big data. This project demonstrates how you can use Keikai to build an application with its Java client API. 
 The tutorial takes two examples: **an Online xlsx File Editor**, and **a Budget Expense Summary App** to explain how you can build your own web application with Keikai.
 
 
@@ -99,7 +99,7 @@ This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is jus
 
 
 # Import Larger Files
-Importing larger file requires larger heap size. Here are suggested minimal heap size for an application server.
+Importing larger files require larger heap size. Here are peak heap size consumed by an application server. Please reference it to specify your server's heap size.
 
 | File size | Number of Cells| Peak Heap Size| 
 | --------- | -------------- | ------------------ |
