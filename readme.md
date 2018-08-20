@@ -1,11 +1,11 @@
 # Keikai Tutorial
 [Keikai](https://keikai.io/) is a web spreadsheet component designed for big data. This project demonstrates how you can use Keikai to build an application with its Java client API. 
-The tutorial takes two examples: **an Online Excel File Editor**, and **a Budget Expense Summary App** to explain how you can build your own web application with Keikai.
+The tutorial takes two examples: **an Online xlsx File Editor**, and **a Budget Expense Summary App** to explain how you can build your own web application with Keikai.
 
 
 # Prerequisite
 You need to download and start keikai server before running this project.
-1. [Contact us](https://keikai.io/#contact) to get **Keikai server** according to your OS system
+1. [Contact us](https://keikai.io/#contact) to get **Keikai server** according to your OS system (ex. 64bit Windows)
 2. unzip the downloaded zip file, go to `keikai` folder
 3. run the executable command:
 * Mac/Linux
@@ -38,7 +38,7 @@ For other options, you can check with the command:
 
 
 # How to Run This Project
-You can run this project with a gradle wrapper without installing anything in advanced (gradle wrapper will install required files for you). Just run the following command in your command line interface:
+You can run this project with a gradle wrapper without installing anything in advance (gradle wrapper will install required files for you). Just run the following command in your command line interface:
 * Linux / Mac
 
 `./gradlew appRun`
@@ -70,7 +70,7 @@ Microsoft Excel Open XML Document (**.xlsx**) only
 
 # Scenarios to Demonstrate
 ## Online Excel File Editor
-This project demonstrates how you can use Keikai as an online editor, providing the familiar spreadsheet experiences in the Web such as formula, filtering, sorting, conditional formatting, and so on. To try out the demo, you can upload an Excel file and edit it in a browser. Please visit [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) with you browser.
+This project demonstrates how you can use Keikai as an online xlsx editor, providing the familiar spreadsheet experiences in the Web such as formula, filtering, sorting, conditional formatting, and so on. To try out the demo, you can upload an Excel file and edit it in a browser. Please visit [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) with you browser.
 
 If you fail to import an xlsx file, please kindly send the file to [info@keikai.io](mailto:info@keikai.io).
 
@@ -107,6 +107,7 @@ Importing larger file requires larger heap size. Here are suggested minimal heap
 | 20 MB     | 2.9 millions  | 1.9G  |
 | 40 MB     | 8.7 millions  | 2.5G  |
 
+If you wish to try importing large files, please increase your heap size accordingly. 
 You can increase the heap size with JVM arguments:
 
 `gradle appRun -Dorg.gradle.jvmargs=-Xmx4g`
