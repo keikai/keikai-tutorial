@@ -10,7 +10,10 @@ buildscript {
 
 ext.jetty94Version = '9.4.10.v20180503'
 
-gretty.servletContainer = 'jetty9.4'
+gretty {
+    servletContainer = 'jetty9.4'
+    jvmArgs = ['-Xmx3g'] //larger heap size for larger files
+}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
