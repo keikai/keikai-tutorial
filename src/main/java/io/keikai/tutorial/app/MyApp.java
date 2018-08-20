@@ -52,12 +52,13 @@ public class MyApp {
         List<Expense> list = SampleDataDao.queryByCategory();
         int row = 18;
         int col = 0;
+        String bookName = spreadsheet.getBookName();
         for (Expense expense : list) {
-            Range categoryCell = spreadsheet.getRange(row, col);
+            Range categoryCell = spreadsheet.getRange(bookName, 0, row, col);
             categoryCell.setValue(expense.getCategory());
-            Range quantityCell = spreadsheet.getRange(row, col + 1);
+            Range quantityCell = spreadsheet.getRange(bookName, 0, row, col + 1);
             quantityCell.setValue(expense.getQuantity());
-            Range subtotalCell = spreadsheet.getRange(row, col + 2);
+            Range subtotalCell = spreadsheet.getRange(bookName, 0, row, col + 2);
             subtotalCell.setValue(expense.getSubtotal());
             row++;
         }
