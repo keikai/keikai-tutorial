@@ -5,7 +5,7 @@ The tutorial takes two examples: **an Online xlsx File Editor**, and **a Budget 
 
 # Prerequisite
 You need to download and start keikai server before running this project.
-1. [Contact us](https://keikai.io/#contact) to get **Keikai server** according to your OS system (ex. 64bit Windows)
+1. [Contact us](https://keikai.io/#contact) to get **Keikai server** according to your OS system (e.g. 64bit Windows)
 2. unzip the downloaded zip file, go to `keikai` folder
 3. run the executable command:
 * Mac/Linux
@@ -101,7 +101,7 @@ This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is jus
 # Import Larger Files
 Importing larger file requires larger heap size. Here are suggested minimal heap size for an application server.
 
-| File size | Number of Cells| Suggested Heap Size| 
+| File size | Number of Cells| Peak Heap Size| 
 | --------- | -------------- | ------------------ |
 | 10 MB     | 1.4 millions  | 1.5G  |
 | 20 MB     | 2.9 millions  | 1.9G  |
