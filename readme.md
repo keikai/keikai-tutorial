@@ -69,7 +69,7 @@ Microsoft Excel Open XML Document (**.xlsx**) only
 
 
 # Scenarios to Demonstrate
-## Online Excel File Editor
+## Online XLSX File Editor
 This project demonstrates how you can use Keikai as an online xlsx editor, providing the familiar spreadsheet experiences in the Web such as formula, filtering, sorting, conditional formatting, and so on. To try out the demo, you can upload an Excel file and edit it in a browser. Please visit [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) with you browser.
 
 If you fail to import an xlsx file, please kindly send the file to [info@keikai.io](mailto:info@keikai.io).
@@ -94,8 +94,8 @@ This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is jus
 # Project Architecture
 ![architecture.png](architecture.png)
 
-* When calling Keikai Java client API, it communicates with Keikai server.
-* Keikai server communicates with Keikai client in a browser to render a sheet and exchange data.
+* The tutorial application calls Keikai Java client API to communicates with Keikai server.
+* Keikai server communicates with Keikai UI client in a browser to render a sheet and exchange data.
 
 
 # Import Larger Files
