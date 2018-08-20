@@ -81,7 +81,7 @@ To try out this App, please visit [http://localhost:8080/tutorial/app](http://lo
 
 
 
-![](app.png)
+![](images/app.png)
 
 * `AppServlet`: Works as a controller, handles HTTP requests. It calls `MyApp` to achieve business function.
 * `MyApp`: service layer. Implements application logic with Keikai Java client API. It relies on `SampleDataDao` to communicate (query/save) with the database.
@@ -92,7 +92,7 @@ This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is jus
 
 
 # Project Architecture
-![architecture.png](architecture.png)
+![architecture.png](images/architecture.png)
 
 * The tutorial application calls Keikai Java client API to communicates with Keikai server.
 * Keikai server communicates with Keikai UI client in a browser to render a sheet and exchange data.
