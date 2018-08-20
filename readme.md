@@ -38,14 +38,24 @@ For other options, you can check with the command:
 
 
 # How to Run This Project
-You can run this project with a gradle wrapper without installing anything in advance (gradle wrapper will install required files for you). Just run the following command in your command line interface:
-* Linux / Mac
+You can run this project with a Gradle or Maven wrapper without installing anything in advance (those wrappers will install required files for you). Just run the following command in your command line interface:
 
+##  Linux / Mac
+
+### Gradle wrapper
 `./gradlew appRun`
 
-* Window
+### Maven wrapper
+`./mvnw jetty:run`
 
+
+## Window
+
+### Gradle wrapper
 `gradlew appRun`
+
+### Maven wrapper
+`mvnw.cmd jetty:run`
 
 Then visit the following URLs with your browser:
 
