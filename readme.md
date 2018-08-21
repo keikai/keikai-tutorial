@@ -80,18 +80,22 @@ Microsoft Excel Open XML Document (**.xlsx**) only
 
 # Scenarios to Demonstrate
 ## Online XLSX File Editor
+![](images/editor.png)
+
 This project demonstrates how you can use Keikai as an online xlsx editor, providing the familiar spreadsheet experiences in the Web such as formula, filtering, sorting, conditional formatting, and so on. To try out the demo, you can upload an Excel file and edit it in a browser. Please visit [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) with you browser.
 
 If you fail to import an xlsx file, please kindly send the file to [info@keikai.io](mailto:info@keikai.io).
 
+
 ## Budget Expense Summary App - Working with a Database
+![](images/app.png)
 This project shows you how you can pre-load an Excel template, and populate data into the template from your database. It also demonstrates how you can save the changes back to the database. 
 
 To try out this App, please visit [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) with you browser. Follow the on-screen instructions and add a new expense to the 2nd page. The application will bring you back to the first page displaying updated numbers and charts. 
 
 
 
-![](images/app.png)
+![](images/app-architecture.png)
 
 * `AppServlet`: Works as a controller, handles HTTP requests. It calls `MyApp` to achieve business function.
 * `MyApp`: service layer. Implements application logic with Keikai Java client API. It relies on `SampleDataDao` to communicate (query/save) with the database.
