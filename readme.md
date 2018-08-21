@@ -89,6 +89,7 @@ If you fail to import an xlsx file, please kindly send the file to [info@keikai.
 
 ## Budget Expense Summary App - Working with a Database
 ![](images/app.png)
+
 This project shows you how you can pre-load an Excel template, and populate data into the template from your database. It also demonstrates how you can save the changes back to the database. 
 
 To try out this App, please visit [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) with you browser. Follow the on-screen instructions and add a new expense to the 2nd page. The application will bring you back to the first page displaying updated numbers and charts. 
