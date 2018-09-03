@@ -21,7 +21,14 @@ targetCompatibility = 1.8
 repositories {
     mavenCentral()
     mavenLocal() // remove when keikai client is published
-    maven { url "http://mavensync.zkoss.org/eval" }
+    // for keikai-java-client
+    maven {
+        url "http://mavensync.zkoss.org/eval"
+    }
+    // for socket.io-client
+    maven {
+        url "http://mavensync.zkoss.org/maven2"
+    }
 }
 
 dependencies {
