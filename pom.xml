@@ -27,6 +27,11 @@
 			<name>Keikai Evaluation Repository</name>
 			<url>http://mavensync.zkoss.org/eval</url>
 		</repository>
+		<repository>
+			<id>CE</id>
+			<name>CE</name>
+			<url>http://mavensync.zkoss.org/maven2</url>
+		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
