@@ -19,7 +19,7 @@ public class BaseServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        defaultFileFolder = new File(getServletContext().getRealPath("/WEB-INF" + File.separator + Configuration.INTERNAL_FILE_FOLDER));
+        defaultFileFolder = new File(getServletContext().getRealPath(Configuration.getDefaultFileFolder()));
         defaultFile = new File(defaultFileFolder, defaultXlsx);
 //        Configuration.enableSocketIOLog();
     }

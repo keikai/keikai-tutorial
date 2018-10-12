@@ -1,6 +1,9 @@
 package io.keikai.tutorial.persistence;
 
+import io.keikai.tutorial.Configuration;
+import io.keikai.tutorial.app.MyWorkflow;
 import org.hsqldb.cmdline.*;
+import org.slf4j.*;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -11,19 +14,15 @@ import java.util.*;
  * Create adn close a connection for every query.
  */
 public class SampleDataDao {
-    /**
-     * http://hsqldb.org/doc/guide/dbproperties-chapt.html
-     * shutdown=true, Automatic Shutdown, shut down the database when the last connection is closed
-     */
-    public static final String HSQLDB_CONNECTION_STRING = "jdbc:hsqldb:file:database/tutorial;shutdown=true";
-    static String TABLE_NAME = "tutorial";
+    private static final Logger logger = LoggerFactory.getLogger(SampleDataDao.class);
+    static final String TABLE_NAME = "tutorial";
 
     static public void initDatabase() {
         try {
-            Class.forName("org.hsqldb.jdbc.JDBCDriver");
+            Class.forName(Configuration.JDBC_DRIVER);
             try (Connection con = createConnection();) {
                 executeSqlFile(con);
-                System.out.println("-> initialized the database");
+                logger.info("-> initialized a table " + TABLE_NAME);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -32,7 +31,7 @@ public class SampleDataDao {
 
     static Connection createConnection() {
         try {
-            return DriverManager.getConnection(HSQLDB_CONNECTION_STRING, "SA", "");
+            return DriverManager.getConnection(Configuration.HSQLDB_CONNECTION_STRING, "SA", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -44,25 +43,6 @@ public class SampleDataDao {
         SqlFile file = new SqlFile(inputFile);
         file.setConnection(con);
         file.execute();
-    }
-
-    static public List<Expense> queryAll() throws SQLException {
-        String sql = "SELECT * FROM " + TABLE_NAME;
-        try (Connection con = createConnection();
-             Statement statement = con.prepareStatement(sql);
-             ResultSet resultSet = statement.executeQuery(sql);
-        ) {
-            LinkedList<Expense> list = new LinkedList<>();
-            while (resultSet.next()) {
-                Expense expense = new Expense();
-                expense.setId(resultSet.getInt("id"));
-                expense.setCategory(resultSet.getString("category"));
-                expense.setQuantity(resultSet.getInt("quantity"));
-                expense.setSubtotal(resultSet.getInt("subtotal"));
-                list.add(expense);
-            }
-            return list;
-        }
     }
 
     static public List<Expense> queryByCategory() {
