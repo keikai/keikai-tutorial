@@ -61,6 +61,7 @@ Then visit the following URLs with your browser:
 
 * [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) 
 * [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) 
+* [http://localhost:8080/tutorial/workflow](http://localhost:8080/tutorial/workflow) 
 
 
 ## Connect to a Different Keikai Server Address
@@ -103,7 +104,10 @@ To try out this App, please visit [http://localhost:8080/tutorial/app](http://lo
 * `SampleDataDao`: persistence layer. Connects to HSQL database with JDBC. This DAO (Data Access Object) class is responsible for query and save expense data into the database. 
 
 
-This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is just an example, you can definitely load data from any other data source by yourselves. 
+# Workflow App
+![](images/workflow.png)
+
+This application demonstrates how to build a workflow application with Keikai only.
 
 
 # Project Architecture
@@ -111,6 +115,7 @@ This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is jus
 
 * The tutorial application calls Keikai Java client API to communicates with Keikai server.
 * Keikai server communicates with Keikai UI client in a browser to render a sheet and exchange data.
+* This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is just an example, you can definitely load data from any other data source by yourselves. 
 
 
 # Import Larger Files
