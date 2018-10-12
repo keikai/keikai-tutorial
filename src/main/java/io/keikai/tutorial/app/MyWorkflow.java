@@ -267,7 +267,10 @@ public class MyWorkflow {
             @Override
             public void onEvent(RangeEvent rangeEvent) throws Exception {
                 if (!rangeEvent.getWorksheet().getName().equals(SHEET_SUBMISSION)
-                        || (rangeEvent.getColumn() < 2 || rangeEvent.getColumn() > 6)) { //inside table columns
+                        || rangeEvent.getColumn() < 2
+                        || rangeEvent.getColumn() > 6
+                        || rangeEvent.getRow() < STARTING_ROW
+                        || rangeEvent.getRow() > (STARTING_ROW + submissionList.size()-1)) { //inside table columns
                     return;
                 }
                 Range idCell = spreadsheet.getRange(rangeEvent.getRange().getRow(), STARTING_COLUMN);
