@@ -190,7 +190,6 @@ public class MyWorkflow {
             addFormSelectionListener();
             sheet.protect(new SheetProtection.Builder().setPassword("")
                     .setAllowSelectLockedCells(true)
-                    .setAllowSelectUnlockedCells(true)
                     .build());
         } else { //supervisor
             if (!submissionPopulated) {
@@ -203,7 +202,6 @@ public class MyWorkflow {
                         .setAllowFiltering(true)
                         .setAllowSorting(true)
                         .setAllowSelectLockedCells(true)
-                        .setAllowSelectUnlockedCells(true)
                         .build());
             }
         }
