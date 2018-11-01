@@ -27,6 +27,6 @@ public class Configuration {
     }
 
     static public String getDefaultFileFolder(){
-        return "/WEB-INF" + File.separator + Configuration.INTERNAL_FILE_FOLDER + File.separator;
+        return "/WEB-INF/" + INTERNAL_FILE_FOLDER + "/";
     }
 }
