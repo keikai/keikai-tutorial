@@ -117,8 +117,34 @@ This application demonstrates how to build a workflow application with Keikai on
 * Keikai server communicates with Keikai UI client in a browser to render a sheet and exchange data.
 * This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is just an example, you can definitely load data from any other data source by yourselves. 
 
+# FAQ
 
-# Import Larger Files
+## Wrong version between keikai client and server
+When you visit the demo page, if you see the error:
+
+![architecture.png](images/inconsistentVersion.png)
+
+That means the version of keikai java client is inconsistent with the server. The message also tells you both the client and server version you use. You need to make both version consistent, so you can either:
+* [Contact us](https://keikai.io/#contact) to download another version of keikai server
+* Change keikai client version of this tutorial project
+
+### How to change the keikai client version:
+Just modify the version string in the corresponding file depending on which tool you run this project. 
+
+#### Maven
+pom.xml
+
+`<version>*-Eval</version>`
+
+#### Gradle
+
+build.gradle
+
+`compile "io.keikai:keikai-java-client:*-Eval"`
+
+ 
+ 
+## Import Larger Files
 Importing larger files require larger heap size. Here are peak heap size consumed by an application server. Please reference it to specify your server's heap size.
 
 | File size | Number of Cells| Peak Heap Size| 
