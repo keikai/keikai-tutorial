@@ -2,7 +2,7 @@ package io.keikai.tutorial.app;
 
 import io.keikai.client.api.*;
 import io.keikai.client.api.event.*;
-import io.keikai.client.api.ui.UIActivity;
+import io.keikai.client.api.ui.UiActivity;
 import io.keikai.tutorial.persistence.*;
 
 import java.io.*;
@@ -20,7 +20,7 @@ public class MyApp {
     public MyApp(String keikaiServerAddress) {
         spreadsheet = Keikai.newClient(keikaiServerAddress);
         // close spreadsheet Java client when a browser disconnect to keikai server to avoid memory leak
-        spreadsheet.setUIActivityCallback(new UIActivity() {
+        spreadsheet.setUiActivityCallback(new UiActivity() {
             public void onConnect() {
             }
 
