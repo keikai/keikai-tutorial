@@ -46,7 +46,7 @@ You can run this project with a Gradle or Maven wrapper without installing anyth
 `./gradlew appRun`
 
 ### Maven wrapper
-`./mvnw jetty:run`
+`./mvnw jetty:run-forked`
 
 
 ## Window
@@ -55,7 +55,7 @@ You can run this project with a Gradle or Maven wrapper without installing anyth
 `gradlew appRun`
 
 ### Maven wrapper
-`mvnw.cmd jetty:run`
+`mvnw.cmd jetty:run-forked`
 
 Then visit the following URLs with your browser:
 
@@ -156,4 +156,13 @@ Importing larger files require larger heap size. Here are peak heap size consume
 If you wish to try importing large files, please increase your heap size accordingly. 
 You can increase the heap size with JVM arguments:
 
+### gradle
 `gradle appRun -Dorg.gradle.jvmargs=-Xmx4g`
+
+
+### maven
+modify the configurations of jetty-maven-plugin in pom.xml
+```
+<jvmArgs>-Xmx4096m</jvmArgs>
+```
+please refer to https://www.eclipse.org/jetty/documentation/9.4.x/jetty-maven-plugin.html
