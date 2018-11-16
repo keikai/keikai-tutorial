@@ -11,6 +11,7 @@ import java.io.*;
  */
 public class MyEditor {
     private Spreadsheet spreadsheet;
+    private String defaultXlsx = "welcome.xlsx";
 
     public MyEditor(String keikaiServerAddress) {
         // specify a custom toolbar settings
@@ -30,8 +31,8 @@ public class MyEditor {
         return spreadsheet.getURI(elementId);
     }
 
-    public void init(String bookName, File xlsxFile) throws FileNotFoundException, AbortedException {
-        spreadsheet.importAndReplace(bookName, xlsxFile);
+    public void init(File defaultFileFolder) throws FileNotFoundException, AbortedException {
+        spreadsheet.importAndReplace(defaultXlsx, new File(defaultFileFolder, defaultXlsx));
     }
 
     /**

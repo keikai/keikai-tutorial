@@ -12,10 +12,6 @@ import java.io.IOException;
 @WebServlet("/editor/*")
 public class EditorServlet extends BaseServlet {
 
-    public EditorServlet(){
-        this.defaultXlsx = "welcome.xlsx";
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(request, resp);
@@ -25,7 +21,7 @@ public class EditorServlet extends BaseServlet {
         // store as an attribute to be accessed by EL on a JSP
         request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
         try {
-            myEditor.init(defaultXlsx, defaultFile);
+            myEditor.init(defaultFileFolder);
         } catch (AbortedException e) {
             e.printStackTrace();
         }

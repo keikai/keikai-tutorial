@@ -12,10 +12,6 @@ import java.io.IOException;
 @WebServlet("/app/*")
 public class AppServlet extends BaseServlet {
 
-    public AppServlet(){
-        this.defaultXlsx = "app.xlsx";
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(request, resp);
@@ -25,7 +21,7 @@ public class AppServlet extends BaseServlet {
         // store as an attribute to be accessed by EL on a JSP
         request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
         try {
-            myApp.init(defaultXlsx, defaultFile);
+            myApp.init(defaultFileFolder);
         } catch (AbortedException e) {
             e.printStackTrace();
         }

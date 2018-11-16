@@ -13,6 +13,7 @@ import java.util.*;
  */
 public class MyApp {
     private Spreadsheet spreadsheet;
+    private String defaultXlsx = "app.xlsx";
     private static final int CATEGORY_COLUMN = 1;
     private static final int STARTING_ROW = 3; //the row index that a user should start to input the expense record
     private int nExpense = 0; // number of user-input expense
@@ -39,8 +40,8 @@ public class MyApp {
         return spreadsheet.getURI(elementId);
     }
 
-    public void init(String bookName, File xlsxFile) throws FileNotFoundException, AbortedException {
-        spreadsheet.importAndReplace(bookName, xlsxFile);
+    public void init(File defaultFileFolder) throws FileNotFoundException, AbortedException {
+        spreadsheet.importAndReplace(defaultXlsx, new File(defaultFileFolder, defaultXlsx));
         addEventListeners();
         loadExpenseToSheet();
     }
