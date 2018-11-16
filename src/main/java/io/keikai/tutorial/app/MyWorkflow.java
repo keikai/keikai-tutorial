@@ -42,7 +42,7 @@ public class MyWorkflow {
     private Spreadsheet spreadsheet;
     private boolean submissionPopulated = false;
     private String role;
-    private String entryBookName;
+    private String entryBookName = "workflow.xlsx";
     private File entryFile;
     private Submission submissionToReview = null;
 
@@ -67,9 +67,8 @@ public class MyWorkflow {
         return spreadsheet.getURI(elementId);
     }
 
-    public void init(String bookName, File xlsxFile) {
-        this.entryBookName = bookName;
-        this.entryFile = xlsxFile;
+    public void init(File defaultFileFolder) {
+        this.entryFile = new File(defaultFileFolder, entryBookName);
         start();
         navigateTo(SHEET_MAIN);
     }

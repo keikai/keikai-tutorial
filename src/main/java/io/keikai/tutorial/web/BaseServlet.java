@@ -1,6 +1,5 @@
 package io.keikai.tutorial.web;
 
-import io.keikai.client.api.*;
 import io.keikai.tutorial.Configuration;
 
 import javax.servlet.*;
@@ -13,14 +12,11 @@ import java.io.*;
 public class BaseServlet extends HttpServlet {
     protected String keikaiServerAddress = Configuration.DEFAULT_KEIKAI_SERVER;
     protected File defaultFileFolder;
-    protected File defaultFile;
-    protected String defaultXlsx = "welcome.xlsx";
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         defaultFileFolder = new File(getServletContext().getRealPath(Configuration.getDefaultFileFolder()));
-        defaultFile = new File(defaultFileFolder, defaultXlsx);
 //        Configuration.enableSocketIOLog();
     }
 
