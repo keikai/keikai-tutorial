@@ -1,7 +1,6 @@
 package io.keikai.tutorial.web;
 
-import io.keikai.client.api.AbortedException;
-import io.keikai.tutorial.*;
+import io.keikai.tutorial.Configuration;
 import io.keikai.tutorial.app.MyEditor;
 
 import javax.servlet.ServletException;
@@ -20,11 +19,7 @@ public class EditorServlet extends BaseServlet {
         String keikaiJs = myEditor.getJavaScriptURI("spreadsheet");
         // store as an attribute to be accessed by EL on a JSP
         request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
-        try {
-            myEditor.init(defaultFileFolder);
-        } catch (AbortedException e) {
-            e.printStackTrace();
-        }
+        myEditor.init(defaultFileFolder);
         request.getRequestDispatcher("/myeditor/editor.jsp").forward(request, resp);
     }
 }

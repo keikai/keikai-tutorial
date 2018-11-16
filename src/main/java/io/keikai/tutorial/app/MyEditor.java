@@ -31,8 +31,12 @@ public class MyEditor {
         return spreadsheet.getURI(elementId);
     }
 
-    public void init(File defaultFileFolder) throws FileNotFoundException, AbortedException {
-        spreadsheet.importAndReplace(defaultXlsx, new File(defaultFileFolder, defaultXlsx));
+    public void init(File defaultFileFolder){
+        try {
+            spreadsheet.importAndReplace(defaultXlsx, new File(defaultFileFolder, defaultXlsx));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

@@ -18,6 +18,15 @@ public class MyApp {
     private static final int STARTING_ROW = 3; //the row index that a user should start to input the expense record
     private int nExpense = 0; // number of user-input expense
 
+    /**
+     * pass the anchor DOM element ID for rendering a Keikai spreadsheet
+     * @param elementId
+     * @return
+     */
+    public String getJavaScriptURI(String elementId) {
+        return spreadsheet.getURI(elementId);
+    }
+
     public MyApp(String keikaiServerAddress) {
         spreadsheet = Keikai.newClient(keikaiServerAddress);
         // close spreadsheet Java client when a browser disconnect to keikai server to avoid memory leak
@@ -31,19 +40,14 @@ public class MyApp {
         });
     }
 
-    /**
-     * pass the anchor DOM element ID for rendering a Keikai spreadsheet
-     * @param elementId
-     * @return
-     */
-    public String getJavaScriptURI(String elementId) {
-        return spreadsheet.getURI(elementId);
-    }
-
-    public void init(File defaultFileFolder) throws FileNotFoundException, AbortedException {
-        spreadsheet.importAndReplace(defaultXlsx, new File(defaultFileFolder, defaultXlsx));
-        addEventListeners();
-        loadExpenseToSheet();
+    public void init(File defaultFileFolder){
+        try {
+            spreadsheet.importAndReplace(defaultXlsx, new File(defaultFileFolder, defaultXlsx));
+            addEventListeners();
+            loadExpenseToSheet();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
