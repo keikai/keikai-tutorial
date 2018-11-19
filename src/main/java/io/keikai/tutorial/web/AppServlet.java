@@ -15,11 +15,11 @@ public class AppServlet extends BaseServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(request, resp);
         MyApp myApp = new MyApp(keikaiServerAddress);
+        myApp.init(defaultFileFolder);
         // pass the anchor DOM element id for rendering keikai
         String keikaiJs = myApp.getJavaScriptURI("spreadsheet");
         // store as an attribute to be accessed by EL on a JSP
         request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
-        myApp.init(defaultFileFolder);
         request.getRequestDispatcher("/myapp/app.jsp").forward(request, resp);
     }
 }

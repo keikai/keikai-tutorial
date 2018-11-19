@@ -15,11 +15,11 @@ public class EditorServlet extends BaseServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(request, resp);
         MyEditor myEditor = new MyEditor(keikaiServerAddress);
+        myEditor.init(defaultFileFolder);
         // pass the anchor DOM element id for rendering keikai
         String keikaiJs = myEditor.getJavaScriptURI("spreadsheet");
         // store as an attribute to be accessed by EL on a JSP
         request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
-        myEditor.init(defaultFileFolder);
         request.getRequestDispatcher("/myeditor/editor.jsp").forward(request, resp);
     }
 }
