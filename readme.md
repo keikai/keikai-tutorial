@@ -4,7 +4,7 @@
 
 # How to Try Keikai with Chrome
 1. [start Keikai server](#Start-Keikai-Server)
-2. [start an application server](##Start-an-application-server)
+2. [start an application server](#Start-an-application-server)
 3. visit [http://localhost:8080](http://localhost:8080) with Chrome
 or URLs below:
 * [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) 
