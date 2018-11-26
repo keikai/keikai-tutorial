@@ -3,8 +3,8 @@
 
 
 # How to Try Keikai with Chrome
-1. start Keikai server
-2. start an application server
+1. [start Keikai server](#Start-Keikai-Server)
+2. [start an application server](##Start-an-application-server)
 3. visit [http://localhost:8080](http://localhost:8080) with Chrome
 or URLs below:
 * [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) 
@@ -49,6 +49,8 @@ For complete options, you can check with the command:
 
 
 # Start an application server
+Download or clone this project to your local.
+
 You can start this project on a built-in application server with a Gradle or Maven wrapper without installing anything in advance (those wrappers will download and install required files for you). Just run the following command in your command line interface:
 
 ##  Linux / Mac
