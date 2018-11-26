@@ -5,9 +5,10 @@ The tutorial takes two examples: **an Online xlsx File Editor**, and **a Budget 
 
 # Prerequisite
 You need to download and start keikai server before running this project.
-1. [Contact us](https://keikai.io/#contact) to get **Keikai server** according to your OS system (e.g. 64bit Windows)
-2. unzip the downloaded zip file, go to `keikai` folder
-3. run the executable command:
+1. Make sure you have JDK 6 (Java SE 6) or later version installed
+2. [Contact us](https://keikai.io/#contact) to get **Keikai server** according to your OS system (e.g. 64bit Windows)
+3. unzip the downloaded zip file, go to `keikai` folder
+4. run the executable command:
 * Mac/Linux
 
 `./keikai`
