@@ -1,9 +1,18 @@
 # Keikai Tutorial
-[Keikai](https://keikai.io/) is a web spreadsheet designed for big data. This project demonstrates how you can use Keikai to build an application with its Java client API. 
-The tutorial takes two examples: **an Online xlsx File Editor**, and **a Budget Expense Summary App** to explain how you can build your own web application with Keikai.
+[Keikai](https://keikai.io/) is a web spreadsheet designed for big data. This project demonstrates how you can build an application in Keikai's Java client API with several examples.
 
 
-# Prerequisite
+# How to Try Keikai with Chrome
+1. start Keikai server
+2. start an application server
+3. visit [http://localhost:8080](http://localhost:8080) with Chrome
+or URLs below:
+* [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) 
+* [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) 
+* [http://localhost:8080/tutorial/workflow](http://localhost:8080/tutorial/workflow) 
+
+
+# Start Keikai Server
 You need to download and start keikai server before running this project.
 1. Make sure you have JDK 6 (Java SE 6) or later version installed
 2. [Contact us](https://keikai.io/#contact) to get **Keikai server** according to your OS system (e.g. 64bit Windows)
@@ -19,7 +28,7 @@ You need to download and start keikai server before running this project.
 After executing the command, you should see some messages like:
 ```
 1:8888:2018-06-05 09:52:18.059549Z:keikai_dart_server:keikai_server:0
-INFO: Keikai version: 1.0.0-alpha.0@jhsioate
+INFO: Keikai version: 1.0.0-beta.5@jhsioate
 ...
 INFO: Rikulo Stream Server 1.7.0 starting on 0.0.0.0:8888
 ...
@@ -28,18 +37,19 @@ INFO: Rikulo Stream Server 1.7.0 starting on 0.0.0.0:8888
 Then Keikai server should start up successfully at `localhost:8888`
 
 
-# Keikai Server Options (optional)
-## With different port and address
-`./keikai  —port=9999 —address=192.168.1.1`
-
-## Help
-For other options, you can check with the command:
+## Keikai Server Options (optional)
+For complete options, you can check with the command:
 
 `./keikai --help`
 
+### Start with different port and address
+`./keikai  -—port=9999 -—address=192.168.1.1`
 
-# How to Run This Project
-Now that the Keikai server is up and running, it is time to run the tutorial project. You can run this project with a Gradle or Maven wrapper without installing anything in advance (those wrappers will install required files for you). Just run the following command in your command line interface:
+
+
+
+# Start an application server
+You can start this project on a built-in application server with a Gradle or Maven wrapper without installing anything in advance (those wrappers will download and install required files for you). Just run the following command in your command line interface:
 
 ##  Linux / Mac
 
@@ -58,11 +68,6 @@ Now that the Keikai server is up and running, it is time to run the tutorial pro
 ### Maven wrapper
 `mvnw.cmd jetty:run-forked`
 
-Then visit the following URLs with your browser:
-
-* [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) 
-* [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) 
-* [http://localhost:8080/tutorial/workflow](http://localhost:8080/tutorial/workflow) 
 
 
 ## Connect to a Different Keikai Server Address
