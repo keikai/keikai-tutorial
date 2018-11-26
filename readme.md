@@ -27,7 +27,7 @@ INFO: Rikulo Stream Server 1.7.0 starting on 0.0.0.0:8888
 Then Keikai server should start up successfully at `localhost:8888`
 
 
-# Keikai Server Options
+# Keikai Server Options (optional)
 ## With different port and address
 `./keikai  —port=9999 —address=192.168.1.1`
 
@@ -38,7 +38,7 @@ For other options, you can check with the command:
 
 
 # How to Run This Project
-You can run this project with a Gradle or Maven wrapper without installing anything in advance (those wrappers will install required files for you). Just run the following command in your command line interface:
+Now that the Keikai server is up and running, it is time to run the tutorial project. You can run this project with a Gradle or Maven wrapper without installing anything in advance (those wrappers will install required files for you). Just run the following command in your command line interface:
 
 ##  Linux / Mac
 
