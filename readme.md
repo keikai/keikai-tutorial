@@ -5,8 +5,7 @@
 # How to Try Keikai with Chrome
 1. [start Keikai server](#Start-Keikai-Server)
 2. [start an application server](#Start-an-application-server)
-3. visit [http://localhost:8080](http://localhost:8080) with Chrome
-or URLs below:
+3. visit [http://localhost:8080](http://localhost:8080) or URLs below with Chrome:
 * [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) 
 * [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) 
 * [http://localhost:8080/tutorial/workflow](http://localhost:8080/tutorial/workflow) 
@@ -37,26 +36,12 @@ INFO: Rikulo Stream Server 1.7.0 starting on 0.0.0.0:8888
 Then Keikai server should start up successfully at `localhost:8888`
 
 
-## Keikai Server Options (optional)
-For complete options, you can check with the command:
-
-`./keikai --help`
-
-### Start with different port and address
-`./keikai  -—port=9999 -—address=192.168.1.1`
-
-
-
-
 # Start an application server
 Download or clone this project to your local.
 
-You can start this project on a built-in application server with a Gradle or Maven wrapper without installing anything in advance (those wrappers will download and install required files for you). Just run the following command in your command line interface:
+You can start this project on a built-in application server with Maven wrapper without installing anything in advance (the wrapper will download and install required files for you). Just run the following command in your command line interface:
 
 ##  Linux / Mac
-
-### Gradle wrapper
-`./gradlew appRun`
 
 ### Maven wrapper
 `./mvnw jetty:run-forked`
@@ -64,18 +49,8 @@ You can start this project on a built-in application server with a Gradle or Mav
 
 ## Window
 
-### Gradle wrapper
-`gradlew appRun`
-
 ### Maven wrapper
 `mvnw.cmd jetty:run-forked`
-
-
-
-## Connect to a Different Keikai Server Address
-By default, this project connects to a Keikai server at `localhost:8888`. If you wish to connect to a different address, please append a query string with the `server` key:
- 
- `http://localhost:8080/tutorial/editor?server=10.1.1.1:8888`
 
 
 # Supported Browser
