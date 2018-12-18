@@ -1,10 +1,10 @@
 package io.keikai.tutorial.app;
 
 import io.keikai.client.api.*;
-import io.keikai.client.api.ui.UiActivity;
+import io.keikai.client.api.ui.UIActivity;
 import io.keikai.util.Maps;
 
-import java.io.*;
+import java.io.File;
 
 /**
  * implement the application logic
@@ -17,7 +17,7 @@ public class MyEditor {
         // specify a custom toolbar settings
         spreadsheet = Keikai.newClient(keikaiServerAddress, getSettings());
         // close spreadsheet Java client when a browser disconnect to keikai server to avoid memory leak
-        spreadsheet.setUiActivityCallback(new UiActivity() {
+        spreadsheet.setUIActivityCallback(new UIActivity() {
             public void onConnect() {
             }
 

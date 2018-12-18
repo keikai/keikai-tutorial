@@ -3,7 +3,7 @@ package io.keikai.tutorial.app;
 import io.keikai.client.api.*;
 import io.keikai.client.api.ctrl.Button;
 import io.keikai.client.api.event.*;
-import io.keikai.client.api.ui.UiActivity;
+import io.keikai.client.api.ui.UIActivity;
 import io.keikai.tutorial.persistence.*;
 import io.keikai.tutorial.web.AppContextListener;
 import io.keikai.util.DateUtil;
@@ -50,7 +50,7 @@ public class MyWorkflow {
     public MyWorkflow(String keikaiServerAddress) {
         spreadsheet = Keikai.newClient(keikaiServerAddress);
         // close spreadsheet Java client when a browser disconnects to keikai server to avoid memory leak
-        spreadsheet.setUiActivityCallback(new UiActivity() {
+        spreadsheet.setUIActivityCallback(new UIActivity() {
             public void onConnect() {
             }
 
