@@ -3,31 +3,45 @@
 
 
 # How to Try Keikai with Chrome
+Just 3 steps:
 1. [start Keikai server](#Start-Keikai-Server)
 2. [start an application server](#Start-an-application-server)
 3. visit [http://localhost:8080](http://localhost:8080) or URLs below with Chrome:
-* [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) 
 * [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) 
 * [http://localhost:8080/tutorial/workflow](http://localhost:8080/tutorial/workflow) 
+* [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor)
 
 
 # Start Keikai Server
-You need to download and start keikai server before running this project.
-1. Make sure you have JDK 6 (Java SE 6) or later version installed
-2. [Contact us](https://keikai.io/#contact) to get **Keikai server** according to your OS system (e.g. 64bit Windows)
-3. unzip the downloaded zip file, go to `keikai` folder
-4. run the executable command:
+You need to download and start keikai server before running this project. Keikai server is a standalone server that serves you spreadsheet related functions.
+
+## Download the server according to your OS.
+
+* Windows x64
+https://keikai.io/download/?dl=uqX0SgPJhQpSbkwIG5BQoA%3D%3D%3AVmmDd0Rry914lKVQcy2byg%2B8EE3VSlwpUX0XdRvJJG0RT9AoxoPSANsPu0R5eVam
+
+* Linux x64
+https://keikai.io/download/?dl=fDehV968z2fSDWOZhd6WmA%3D%3D%3AQulbl5QougdmI5XzX5ZiIUs7gNoi%2B3aUu%2FHlIfW0toooiD06pYEDJlq8mgSU4SEA
+
+* Mac
+https://keikai.io/download/?dl=rf9HhoUPpmO0GKQOg8JR8Q%3D%3D%3A0GIku1%2BEwiW2uBz5b1rAU%2BjypP4WugcLGTm8OJ0hFOJ0dAlWGAZERgSRo33IpHDV
+
+[Contact us](https://keikai.io/#contact) if you have problems to download.
+
+## Run Keikai Server
+We suggest you running Keikai server on the same machine as the tutorial project to reduce communication cost between them.
+1. unzip the downloaded zip file, go to its `keikai` folder
+2. run the executable command:
 * Mac/Linux
-
 `./keikai`
-* Windows
 
+* Windows
 `keikai.bat`
 
 After executing the command, you should see some messages like:
 ```
 1:8888:2018-06-05 09:52:18.059549Z:keikai_dart_server:keikai_server:0
-INFO: Keikai version: 1.0.0-beta.5@jhsioate
+INFO: Keikai version: 1.0.0-beta.9@jhsioate
 ...
 INFO: Rikulo Stream Server 1.7.0 starting on 0.0.0.0:8888
 ...
@@ -37,7 +51,7 @@ Then Keikai server should start up successfully at `localhost:8888`
 
 
 # Start an application server
-Download or clone this project to your local.
+Download or clone this project to your machine.
 
 You can start this project on a built-in application server with Maven wrapper without installing anything in advance (the wrapper will download and install required files for you). Just run the following command in your command line interface:
 
@@ -63,21 +77,19 @@ Microsoft Excel Open XML Document (**.xlsx**) only
 
 
 # Scenarios to Demonstrate
-## Online XLSX File Editor
-![](images/editor.png)
 
-This project demonstrates how you can use Keikai as an online xlsx editor, providing the familiar spreadsheet experiences in the Web such as formula, filtering, sorting, conditional formatting, and so on. To try out the demo, you can upload an Excel file and edit it in a browser. Please visit [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) with you browser.
+## Workflow App - Let Business Team Design Their UI
+![](images/workflow.png)
 
-If you fail to import an xlsx file, please kindly send the file to [info@keikai.io](mailto:info@keikai.io).
+This example is a workflow application built with Keikai only. Besides, it also demonstrates you that business team can design their UI by themselves.
 
 
 ## Budget Expense Summary App - Working with a Database
 ![](images/app.png)
 
-This project shows you how you can pre-load an Excel template, and populate data into the template from your database. It also demonstrates how you can save the changes back to the database. 
+This example shows you how you can pre-load an Excel template, and populate data into the template from your database. It also demonstrates how you can save the changes back to the database. 
 
-To try out this App, please visit [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) with you browser. Follow the on-screen instructions and add a new expense to the 2nd page. The application will bring you back to the first page displaying updated numbers and charts. 
-
+To try out this App, please visit [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) with your browser. Follow the on-screen instructions and add a new expense to the 2nd page. The application will bring you back to the first page displaying updated numbers and charts. 
 
 
 ![](images/app-architecture.png)
@@ -87,10 +99,12 @@ To try out this App, please visit [http://localhost:8080/tutorial/app](http://lo
 * `SampleDataDao`: persistence layer. Connects to HSQL database with JDBC. This DAO (Data Access Object) class is responsible for query and save expense data into the database. 
 
 
-# Workflow App
-![](images/workflow.png)
+## Online XLSX File Editor
+![](images/editor.png)
 
-This application demonstrates how to build a workflow application with Keikai only.
+This example demonstrates how you can build an online xlsx editor with Keikai, providing the familiar spreadsheet experiences in the Web such as formula, filtering, sorting, conditional formatting, and so on. To try out the demo, you can upload an Excel file and edit it in a browser. Please visit [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) with your browser.
+
+If you fail to import an xlsx file, please kindly send the file to [info@keikai.io](mailto:info@keikai.io).
 
 
 # Project Architecture
