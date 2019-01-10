@@ -1,5 +1,5 @@
 # Keikai Tutorial
-[Keikai](https://keikai.io/) is a web spreadsheet designed for big data. This project demonstrates how you can build an application in Keikai's Java client API with several examples.
+[Keikai](https://keikai.io/) works as a spreadsheet engine of your web application. This project demonstrates how you can build an application in Keikai's Java client API with several examples.
 
 
 # How to Try Keikai with Chrome
