@@ -15,16 +15,13 @@ Just 3 steps:
 # Start Keikai Server
 You need to download and start keikai server before running this project. Keikai server is a standalone server that serves you spreadsheet related functions.
 
-## Download the server according to your OS.
+## Download Keikai server according to your OS.
 
-* Windows x64
-https://keikai.io/download/?dl=uqX0SgPJhQpSbkwIG5BQoA%3D%3D%3AVmmDd0Rry914lKVQcy2byg%2B8EE3VSlwpUX0XdRvJJG0RT9AoxoPSANsPu0R5eVam
+* [Windows x64](https://keikai.io/download/?dl=uqX0SgPJhQpSbkwIG5BQoA%3D%3D%3AVmmDd0Rry914lKVQcy2byg%2B8EE3VSlwpUX0XdRvJJG0RT9AoxoPSANsPu0R5eVam)
 
-* Linux x64
-https://keikai.io/download/?dl=fDehV968z2fSDWOZhd6WmA%3D%3D%3AQulbl5QougdmI5XzX5ZiIUs7gNoi%2B3aUu%2FHlIfW0toooiD06pYEDJlq8mgSU4SEA
+* [Linux x64](https://keikai.io/download/?dl=fDehV968z2fSDWOZhd6WmA%3D%3D%3AQulbl5QougdmI5XzX5ZiIUs7gNoi%2B3aUu%2FHlIfW0toooiD06pYEDJlq8mgSU4SEA)
 
-* Mac
-https://keikai.io/download/?dl=rf9HhoUPpmO0GKQOg8JR8Q%3D%3D%3A0GIku1%2BEwiW2uBz5b1rAU%2BjypP4WugcLGTm8OJ0hFOJ0dAlWGAZERgSRo33IpHDV
+* [Mac](https://keikai.io/download/?dl=rf9HhoUPpmO0GKQOg8JR8Q%3D%3D%3A0GIku1%2BEwiW2uBz5b1rAU%2BjypP4WugcLGTm8OJ0hFOJ0dAlWGAZERgSRo33IpHDV)
 
 [Contact us](https://keikai.io/#contact) if you have problems to download.
 
