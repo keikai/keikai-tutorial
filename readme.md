@@ -1,3 +1,4 @@
+![](images/keikai_logo.png) 
 # Keikai Tutorial
 [Keikai](https://keikai.io/) works as a spreadsheet engine of your web application. This project demonstrates how you can build an application in Keikai's Java client API with several examples.
 
