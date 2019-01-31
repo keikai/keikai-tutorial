@@ -18,11 +18,11 @@ You need to download and start keikai server before running this project. Keikai
 
 ## Download Keikai server according to your OS.
 
-* [Windows x64](https://keikai.io/download/?dl=uqX0SgPJhQpSbkwIG5BQoA%3D%3D%3AVmmDd0Rry914lKVQcy2byg%2B8EE3VSlwpUX0XdRvJJG0RT9AoxoPSANsPu0R5eVam)
+* [Windows x64](https://keikai.io/download/?dl=JHSxw%2FX9s3wAuWyq6%2Bmw4Q%3D%3D%3A0FQRpIhVVPppGO9vG671GehNe1yTcwxarCA99Q%2B83dEAwyWY4%2FonBzqKiAIAhs4r)
 
-* [Linux x64](https://keikai.io/download/?dl=fDehV968z2fSDWOZhd6WmA%3D%3D%3AQulbl5QougdmI5XzX5ZiIUs7gNoi%2B3aUu%2FHlIfW0toooiD06pYEDJlq8mgSU4SEA)
+* [Linux x64](https://keikai.io/download/?dl=pMI%2BjAR4PXdQWWiCdBtUYg%3D%3D%3ATkQt2WMxQcErY8bN1ktPM69YduxD9wZt8mGdJVLuRFQI6yTij33s3DdWSp1vJDyZ)
 
-* [Mac](https://keikai.io/download/?dl=rf9HhoUPpmO0GKQOg8JR8Q%3D%3D%3A0GIku1%2BEwiW2uBz5b1rAU%2BjypP4WugcLGTm8OJ0hFOJ0dAlWGAZERgSRo33IpHDV)
+* [Mac](https://keikai.io/download/?dl=%2FEh7vutQMg8o0Amrlg9STA%3D%3D%3AY5IPQ%2FuSliTsxC8ezw%2F%2FqsecJf0bYtTpFG7udz34lshXwgd3rvX8C66%2B8d0dRrIP)
 
 [Contact us](https://keikai.io/#contact) if you have problems to download.
 
