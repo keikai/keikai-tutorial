@@ -5,6 +5,7 @@
 	<artifactId>tutorial</artifactId>
 	<version>1.0.0-beta.9-Eval</version>
 	<properties>
+		<keikai.version>${project.version}</keikai.version>
 		<hsql.version>2.3.4</hsql.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
@@ -37,7 +38,7 @@
 		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-java-client</artifactId>
-			<version>${project.version}</version>
+			<version>${keikai.version}</version>
 		</dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>
