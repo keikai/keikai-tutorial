@@ -81,6 +81,7 @@ Microsoft Excel Open XML Document (**.xlsx**) only
 
 This example is a workflow application built with Keikai only. Besides, it also demonstrates you that business team can design their UI by themselves.
 
+* main Java class: `io.keikai.tutorial.app.MyWorkflow`
 
 ## Budget Expense Summary App - Working with a Database
 ![](images/app.png)
@@ -104,6 +105,7 @@ This example demonstrates how you can build an online xlsx editor with Keikai, p
 
 If you fail to import an xlsx file, please kindly send the file to [info@keikai.io](mailto:info@keikai.io).
 
+* main Java class: `io.keikai.tutorial.app.MyEditor`
 
 # Project Architecture
 ![architecture.png](images/architecture.png)
