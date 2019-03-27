@@ -16,13 +16,8 @@ Just 3 steps:
 # Start Keikai Server
 You need to download and start keikai server before running this project. Keikai server is a standalone server that serves you spreadsheet related functions.
 
-## Download Keikai server according to your OS.
-
-* [Windows x64](https://keikai.io/download/?dl=JHSxw%2FX9s3wAuWyq6%2Bmw4Q%3D%3D%3A0FQRpIhVVPppGO9vG671GehNe1yTcwxarCA99Q%2B83dEAwyWY4%2FonBzqKiAIAhs4r)
-
-* [Linux x64](https://keikai.io/download/?dl=pMI%2BjAR4PXdQWWiCdBtUYg%3D%3D%3ATkQt2WMxQcErY8bN1ktPM69YduxD9wZt8mGdJVLuRFQI6yTij33s3DdWSp1vJDyZ)
-
-* [Mac](https://keikai.io/download/?dl=%2FEh7vutQMg8o0Amrlg9STA%3D%3D%3AY5IPQ%2FuSliTsxC8ezw%2F%2FqsecJf0bYtTpFG7udz34lshXwgd3rvX8C66%2B8d0dRrIP)
+## Download Keikai Engine
+[Download Keikai Engine](https://keikai.io/download) according to the OS of the computer you are installing Keikai Engine.
 
 [Contact us](https://keikai.io/#contact) if you have problems to download.
 
