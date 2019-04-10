@@ -16,7 +16,6 @@ public class MyApp {
     private String defaultXlsx = "app.xlsx";
     private static final int CATEGORY_COLUMN = 1;
     private static final int STARTING_ROW = 3; //the row index that a user should start to input the expense record
-    private int nExpense = 0; // number of user-input expense
 
     /**
      * pass the anchor DOM element ID for rendering a Keikai spreadsheet
@@ -59,8 +58,6 @@ public class MyApp {
         int col = 0;
         String bookName = spreadsheet.getBookName();
         for (Expense expense : list) {
-            Range categoryCell = spreadsheet.getRange(bookName, 0, row, col);
-            categoryCell.setValue(expense.getCategory());
             Range quantityCell = spreadsheet.getRange(bookName, 0, row, col + 1);
             quantityCell.setValue(expense.getQuantity());
             Range subtotalCell = spreadsheet.getRange(bookName, 0, row, col + 2);
@@ -89,6 +86,7 @@ public class MyApp {
      * save expense list in a specific range into the database
      */
     private void saveExpense() {
+        int nExpense = 0; // number of user-input expense
         for (int rowIndex = STARTING_ROW; rowIndex < STARTING_ROW + 4; rowIndex++) {
             Expense expense = readExpense(rowIndex, CATEGORY_COLUMN);
             if (!validate(expense)) {
@@ -97,7 +95,7 @@ public class MyApp {
             SampleDataDao.insert(expense);
             nExpense++;
         }
-        clearInputExpense();
+        clearInputExpense(nExpense);
     }
 
 
@@ -107,21 +105,32 @@ public class MyApp {
                 && expense.getSubtotal() > 0;
     }
 
-    private void clearInputExpense() {
-        spreadsheet.getRange(STARTING_ROW, 0, nExpense, 4).clearContents();
+    private void clearInputExpense(int nExpense) {
+        if (nExpense > 0) {
+            spreadsheet.getRange(STARTING_ROW, 0, nExpense, 4).clearContents();
+        }
     }
 
+    /**
+     * Notice blank cells.
+     */
     private Expense readExpense(int row, int col) {
         Expense expense = new Expense();
         List cellValues = spreadsheet.getRange(row, col, 1, 4).getValues();
         Optional.ofNullable(cellValues.get(0)).ifPresent( cellValue ->{
-            expense.setCategory(cellValue.toString());
+            if (!cellValue.toString().isEmpty()) {
+                expense.setCategory(cellValue.toString());
+            }
         });
         Optional.ofNullable(cellValues.get(1)).ifPresent( cellValue ->{
-            expense.setQuantity(((Number)cellValue).intValue());
+            if (!cellValue.toString().isEmpty()) {
+                expense.setQuantity(Integer.parseInt(cellValue.toString()));
+            }
         });
         Optional.ofNullable(cellValues.get(3)).ifPresent( cellValue ->{
-            expense.setSubtotal(((Number)cellValue).intValue());
+            if (!cellValue.toString().isEmpty()) {
+                expense.setSubtotal(Integer.parseInt(cellValue.toString()));
+            }
         });
         return expense;
     }
