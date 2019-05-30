@@ -45,6 +45,9 @@ public class MyWorkflow {
     private String entryBookName = "workflow.xlsx";
     private File entryFile;
     private Submission submissionToReview = null;
+    static private final SheetProtection PERMISSION_REVIEW = new SheetProtection.Builder().build();
+    static private final SheetProtection PERMISSION_FORM_LIST = new SheetProtection.Builder().setPassword("").setAllowSelectLockedCells(true).build();;
+    static private final SheetProtection PERMISSION_SUBMISSION_LIST = new SheetProtection.Builder().setPassword("").setAllowFiltering(true).setAllowSorting(true).setAllowSelectLockedCells(true).build();
 
 
     public MyWorkflow(String keikaiServerAddress) {
@@ -111,8 +114,9 @@ public class MyWorkflow {
     private void showSubmittedForm(Submission s) throws AbortedException {
         spreadsheet.clearEventListeners();
         spreadsheet.importAndReplace(s.getFormName(), new ByteArrayInputStream(s.getForm().toByteArray()));
-        setupButtonsUponRole(spreadsheet.getWorksheet());
-        spreadsheet.getWorksheet().protect(new SheetProtection.Builder().build());
+        Worksheet worksheet = spreadsheet.getWorksheet();
+        setupButtonsUponRole(worksheet);
+        worksheet.protect(PERMISSION_REVIEW);
     }
 
     private void setupButtonsUponRole(Worksheet worksheet) {
@@ -187,21 +191,14 @@ public class MyWorkflow {
             }
             showFormList();
             addFormSelectionListener();
-            sheet.protect(new SheetProtection.Builder().setPassword("")
-                    .setAllowSelectLockedCells(true)
-                    .build());
+            sheet.protect(PERMISSION_FORM_LIST);
         } else { //supervisor
             if (!submissionPopulated) {
                 if (sheet.isProtected()) {
                     sheet.unprotect("");
                 }
                 showSubmissionList();
-                //allow filter and sorting
-                sheet.protect(new SheetProtection.Builder().setPassword("")
-                        .setAllowFiltering(true)
-                        .setAllowSorting(true)
-                        .setAllowSelectLockedCells(true)
-                        .build());
+                sheet.protect(PERMISSION_SUBMISSION_LIST);
             }
         }
     }
