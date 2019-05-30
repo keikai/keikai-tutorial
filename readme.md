@@ -2,6 +2,11 @@
 # Keikai Tutorial
 [Keikai](https://keikai.io/) works as a spreadsheet engine of your web application. This project demonstrates how you can build an application in Keikai's Java client API with several examples.
 
+Welcome to check related   sites:
+
+* [Demo](https://keikai.io/demo)
+* [Documentation](https://doc.keikai.io)
+
 
 # How to Try Keikai with Chrome
 Just 3 steps:
@@ -32,7 +37,7 @@ We suggest you running Keikai server on the same machine as the tutorial project
 After executing the command, you should see some messages like:
 ```
 1:8888:2018-06-05 09:52:18.059549Z:keikai_dart_server:keikai_server:0
-INFO: Keikai version: 1.0.0-beta.9@jhsioate
+INFO: Keikai version: 1.0.0-beta.20@jhsioate
 ...
 INFO: Rikulo Stream Server 1.7.0 starting on 0.0.0.0:8888
 ...
