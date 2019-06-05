@@ -112,4 +112,4 @@ If you fail to import an xlsx file, please kindly send the file to [info@keikai.
 * Keikai server communicates with Keikai UI client in a browser to render a sheet and exchange data.
 * This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is just an example, you can definitely load data from any other data source by yourselves. 
 
-# [FAQ](https://github.com/keikai/keikai-tutorial/wiki/FAQ)
+# [FAQ](https://doc.keikai.io/dev-ref/faq)
