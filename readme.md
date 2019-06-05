@@ -10,7 +10,7 @@ Welcome to check related   sites:
 
 # How to Try Keikai with Chrome
 Just 3 steps:
-1. [start Keikai server](#Start-Keikai-Server)
+1. [start Keikai engine](#Start-Keikai-Engine)
 2. [start an application server](#Start-an-application-server)
 3. visit [http://localhost:8080](http://localhost:8080) or URLs below with Chrome:
 * [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) 
@@ -18,14 +18,14 @@ Just 3 steps:
 * [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor)
 
 
-# Start Keikai Server
-You need to download and start keikai server before running this project. Keikai server is a standalone server that serves you spreadsheet related functions.
+# Start Keikai Engine
+You need to download and start keikai engine before running this project. Keikai engine is a standalone program that serves you spreadsheet related functions.
 
 ## [Download Keikai Engine](https://keikai.io/download)
 
 
-## Run Keikai Server
-We suggest you running Keikai server on the same machine as the tutorial project to reduce communication cost between them.
+## Run Keikai Engine
+We suggest you running Keikai engine on the same machine as the tutorial project to reduce communication cost between them.
 1. unzip the downloaded zip file, go to its `keikai` folder
 2. run the executable command:
 * Mac/Linux
@@ -43,7 +43,7 @@ INFO: Rikulo Stream Server 1.7.0 starting on 0.0.0.0:8888
 ...
 ```
 
-Then Keikai server should start up successfully at `localhost:8888`
+Then Keikai engine should start up successfully at `localhost:8888`
 
 
 # Start an application server
@@ -108,8 +108,8 @@ If you fail to import an xlsx file, please kindly send the file to [info@keikai.
 # Project Architecture
 ![architecture.png](images/architecture.png)
 
-* The tutorial application calls Keikai Java client API to communicates with Keikai server.
-* Keikai server communicates with Keikai UI client in a browser to render a sheet and exchange data.
+* The tutorial application calls Keikai Java client API to communicates with Keikai engine.
+* Keikai engine communicates with Keikai UI client in a browser to render a sheet and exchange data.
 * This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is just an example, you can definitely load data from any other data source by yourselves. 
 
 # [FAQ](https://doc.keikai.io/dev-ref/faq)
