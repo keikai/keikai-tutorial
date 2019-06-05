@@ -21,8 +21,8 @@ Just 3 steps:
 # Start Keikai Server
 You need to download and start keikai server before running this project. Keikai server is a standalone server that serves you spreadsheet related functions.
 
-## Download Keikai Engine
-[Contact us](https://keikai.io/#contact) and request for the latest Keikai component.
+## [Download Keikai Engine](https://keikai.io/download)
+
 
 ## Run Keikai Server
 We suggest you running Keikai server on the same machine as the tutorial project to reduce communication cost between them.
