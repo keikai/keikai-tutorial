@@ -45,9 +45,8 @@ public class MyWorkflow {
     private String entryBookName = "workflow.xlsx";
     private File entryFile;
     private Submission submissionToReview = null;
-    static private final SheetProtection PERMISSION_REVIEW = new SheetProtection.Builder().build();
-    static private final SheetProtection PERMISSION_FORM_LIST = new SheetProtection.Builder().setPassword("").setAllowSelectLockedCells(true).build();;
-    static private final SheetProtection PERMISSION_SUBMISSION_LIST = new SheetProtection.Builder().setPassword("").setAllowFiltering(true).setAllowSorting(true).setAllowSelectLockedCells(true).build();
+    static private final SheetProtection PERMISSION_REVIEW = new SheetProtection.Builder().setUserInterfaceOnly(true).build();
+    static private final SheetProtection PERMISSION_READ_ONLY = new SheetProtection.Builder().setUserInterfaceOnly(true).setAllowFiltering(true).setAllowSorting(true).setAllowSelectLockedCells(true).build();
 
 
     public MyWorkflow(String keikaiServerAddress) {
@@ -55,6 +54,7 @@ public class MyWorkflow {
         // close spreadsheet Java client when a browser disconnects to keikai server to avoid memory leak
         spreadsheet.setUIActivityCallback(new UIActivity() {
             public void onConnect() {
+                spreadsheet.getUIService().setProtectedSheetWarningEnabled(false);
             }
 
             public void onDisconnect() {
@@ -85,8 +85,15 @@ public class MyWorkflow {
             spreadsheet.importAndReplace(this.entryBookName, this.entryFile);
             submissionPopulated = false;
             addEnterLeaveListeners();
+            protectAllSheets();
         } catch (FileNotFoundException | AbortedException e) {
             logger.error("An error happens at starting a workflow: " + e);
+        }
+    }
+
+    private void protectAllSheets() {
+        for (int i = 0 ; i < spreadsheet.getWorkbook().getSheetCount() ; i++){
+            spreadsheet.getWorksheet(i).protect(PERMISSION_READ_ONLY);
         }
     }
 
@@ -104,10 +111,11 @@ public class MyWorkflow {
         });
     }
 
-    private void showForm(File formFile) throws FileNotFoundException, AbortedException {
+    private void showForm(File formFile) throws FileNotFoundException, AbortedException, DuplicateNameException {
         spreadsheet.clearEventListeners();
-        spreadsheet.importAndReplace(formFile.getName(), formFile);
-        setupButtonsUponRole(spreadsheet.getWorksheet());
+        Workbook formBook = spreadsheet.imports(formFile.getName(), formFile);
+        spreadsheet.setActiveWorkbook(formBook.getName());
+        setupButtonsUponRole(formBook.getWorksheet());
     }
 
 
@@ -183,22 +191,12 @@ public class MyWorkflow {
      * show form or submission list according to the role
      */
     private void showList() {
-        Worksheet sheet = spreadsheet.getWorksheet();
         if (role.equals(ROLE_EMPLOYEE)) {
-            // need to unprotect a sheet before populating a list into cells
-            if (sheet.isProtected()) {
-                sheet.unprotect("");
-            }
             showFormList();
             addFormSelectionListener();
-            sheet.protect(PERMISSION_FORM_LIST);
         } else { //supervisor
             if (!submissionPopulated) {
-                if (sheet.isProtected()) {
-                    sheet.unprotect("");
-                }
                 showSubmissionList();
-                sheet.protect(PERMISSION_SUBMISSION_LIST);
             }
         }
     }
