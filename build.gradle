@@ -23,16 +23,12 @@ repositories {
     mavenLocal() // remove when keikai client is published
     // for keikai-java-client
     maven {
-        url "http://mavensync.zkoss.org/eval"
-    }
-    // for socket.io-client
-    maven {
         url "http://mavensync.zkoss.org/maven2"
     }
 }
 
 dependencies {
-    compile "io.keikai:keikai-java-client:1.0.0-Eval"
+    compile "io.keikai:keikai-java-client:1.0.0"
     compile "org.hsqldb:hsqldb:2.3.4"
     compile "org.hsqldb:sqltool:2.3.4"
     runtime "javax.servlet:javax.servlet-api:3.0.1"

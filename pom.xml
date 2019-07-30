@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>tutorial</artifactId>
-	<version>1.0.0-Eval</version>
+	<version>1.0.0</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
 		<hsql.version>2.3.4</hsql.version>
@@ -23,11 +23,6 @@
 		</license>
 	</licenses>
 	<repositories>
-		<repository>
-			<id>Keikai EVAL</id>
-			<name>Keikai Evaluation Repository</name>
-			<url>http://mavensync.zkoss.org/eval</url>
-		</repository>
 		<repository>
 			<id>CE</id>
 			<name>CE</name>
