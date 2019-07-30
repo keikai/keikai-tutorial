@@ -5,3 +5,7 @@ html, body, .myapp{
 .header{
    padding: 10px 0 10px 0;
 }
+
+#spreadsheet{
+    height: 90%;
+}

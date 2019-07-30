@@ -5,14 +5,14 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel='stylesheet' href='${pageContext.request.contextPath}/css/tutorial.css'/>
-    <script defer src="${keikaiJs}"></script>
     <title>Keikai App</title>
 </head>
 <body>
     <div class="myapp">
         <%@ include file="../header.jsp" %>
-        <div id="spreadsheet" data-show-toolbar="false" data-show-sheet-tabs="false" style="height: 90%" >
+        <div id="spreadsheet" data-show-toolbar="false" data-show-sheet-tabs="false" >
         </div>
     </div>
+    <script src="${keikaiJs}"></script>
 </body>
 </html>
