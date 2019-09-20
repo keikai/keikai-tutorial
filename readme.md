@@ -37,7 +37,7 @@ We suggest you running Keikai engine on the same machine as the tutorial project
 After executing the command, you should see some messages like:
 ```
 1:8888:2018-06-05 09:52:18.059549Z:keikai_dart_server:keikai_server:0
-INFO: Keikai version: 1.0.0-beta.20@jhsioate
+INFO: Keikai version: 1.1.0-beta.20@jhsioate
 ...
 INFO: Rikulo Stream Server 1.7.0 starting on 0.0.0.0:8888
 ...
