@@ -1,0 +1,6 @@
+<zk>
+    <vlayout>
+        <a href="editor.zul">Editor</a>
+        <a href="database.zul">Work with a Database</a>
+    </vlayout>
+</zk>
