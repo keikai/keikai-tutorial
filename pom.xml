@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>tutorial</artifactId>
-	<version>5.0.0-SNAPSHOT</version>
+	<version>5.0.0.FL.20191024</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
 		<hsql.version>2.3.4</hsql.version>
