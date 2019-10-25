@@ -1,7 +1,7 @@
 package io.keikai.tutorial.database;
 
 import io.keikai.api.*;
-import io.keikai.api.model.Sheet;
+import io.keikai.api.model.*;
 import io.keikai.ui.*;
 import io.keikai.ui.event.StopEditingEvent;
 import org.zkoss.zk.ui.Component;
@@ -43,20 +43,25 @@ public class DatabaseComposer extends SelectorComposer<Component> {
 		Ranges.range(sheet, row, ID).setCellValue(trade.getId());
 		Ranges.range(sheet, row, TYPE).setCellValue(trade.getType());
 		Ranges.range(sheet, row, SALESPERSON).setCellValue(trade.getSalesPerson());
-		Ranges.range(sheet, row, SALES).setCellEditText(Integer.toString(trade.getSale()));
+		Ranges.range(sheet, row, SALES).setCellValue(trade.getSale());
 	}
 	
 	/**
-	 * extract data in a cell into a {@link Trade}
+	 * extract data in cells into a {@link Trade}
 	 * @param row
 	 */
 	private Trade extract(int row ){
 		Sheet sheet = ss.getSelectedSheet();
-		Trade trade = new Trade(Ranges.range(sheet, row, ID).getCellData().getDoubleValue().intValue());
+		Trade trade = new Trade(extractInt(Ranges.range(sheet, row, ID)));
 		trade.setType(Ranges.range(sheet, row, TYPE).getCellEditText());
 		trade.setSalesPerson(Ranges.range(sheet, row, SALESPERSON).getCellEditText());
-		trade.setSale(Ranges.range(sheet, row, SALES).getCellData().getDoubleValue().intValue());
+		trade.setSale(extractInt(Ranges.range(sheet, row, SALES)));
 		return trade;
+	}
+
+	private int extractInt(Range cell){
+		CellData cellData = cell.getCellData();
+		return cellData.getDoubleValue() == null ? 0 : cellData.getDoubleValue().intValue();
 	}
 	
 	@Listen("onClick = #load")

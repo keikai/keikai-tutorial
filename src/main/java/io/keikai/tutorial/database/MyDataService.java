@@ -3,7 +3,7 @@ package io.keikai.tutorial.database;
 import java.util.*;
 
 /**
- * A class that simulates accessing a table of a db.
+ * A class that simulates accessing a table of a database.
  * @author hawk
  *
  */
@@ -41,12 +41,6 @@ public class MyDataService {
 		tradeTable.put(trade.getId(), trade);
 	}
 	
-	public void delete(Trade trade){
-		if (tradeTable.containsKey(trade.getId())){
-			tradeTable.remove(trade.getId());
-		}
-	}
-	
 	public Map<Integer, Trade> queryAll(){
 		TreeMap<Integer, Trade> result = new TreeMap<Integer, Trade>();
 		for (Map.Entry<Integer, Trade> entry : tradeTable.entrySet()){
@@ -55,7 +49,7 @@ public class MyDataService {
 		return result;
 	}
 	
-	public Integer nextId(){
+	private Integer nextId(){
 		return sequence++;
 	}
 }
