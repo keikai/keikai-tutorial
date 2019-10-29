@@ -10,6 +10,8 @@ Welcome to check related sites:
 
 
 # How to Run This Project
+Clone the project and launch your command line interface in the keikai-tutorial folder. Execute the following commands based on your setup.
+
 ## Maven ready
 `mvn jetty:run`
 
