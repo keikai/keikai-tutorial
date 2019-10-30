@@ -39,7 +39,7 @@ Keikai can render an xlsx file with a Excel-like web UI and a built-in toolbar. 
 ## Work with a Database
 There are 2 ways to interact with a database:
 1. Import/Export an xlsx file from/to your database: <br/>
-**Import**: please reference the previous section [Online Spreadsheet Editor](##Online Spreadsheet Editor) where you can import xlsx file via the UI or API. <br/>
+**Import**: please reference the previous section [Online Spreadsheet Editor]where you can import xlsx file via the UI or API. <br/>
 **Export**: All information of a book model can be exported to an .xlsx file. You can store the file in a [BLOB](https://en.wikipedia.org/wiki/Binary_large_object) field of a table in a database.
 2. Populate/Store cell data from/to your database: <br/>
 **Populate data into spreadsheet**: When displaying data from the database, you can publish data into cells with `Range` setter methods into Keikai with predefined style.<br/>
