@@ -25,13 +25,6 @@ public class MyDataService {
 			Trade changedTrade = entry.getValue();
 			tradeTable.put(changedTrade.getId(), changedTrade); //simplified logic, update without comparing
 		}
-		Iterator<Integer> keyIterator = tradeTable.keySet().iterator();
-		while (keyIterator.hasNext()){
-			Integer id = keyIterator.next();
-			if(!changedMap.containsKey(id)){
-				keyIterator.remove();
-			}
-		}
 	}
 	
 	public void save(Trade trade){
