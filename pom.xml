@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>tutorial</artifactId>
-	<version>1.1.0-beta.2</version>
+	<version>5.0.0-Beta</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
 		<hsql.version>2.3.4</hsql.version>
@@ -32,24 +32,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>io.keikai</groupId>
-			<artifactId>keikai-java-client</artifactId>
+			<artifactId>keikai-oss</artifactId>
 			<version>${keikai.version}</version>
-		</dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>${hsql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>sqltool</artifactId>
-            <version>${hsql.version}</version>
-        </dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>

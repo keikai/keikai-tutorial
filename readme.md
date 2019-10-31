@@ -1,115 +1,53 @@
 ![](images/keikai_logo.png) 
-# Keikai Tutorial
-[Keikai](https://keikai.io/) works as a spreadsheet engine of your web application. This project demonstrates how you can build an application in Keikai's Java client API with several examples.
 
-Welcome to check related   sites:
+# Keikai Tutorial
+[Keikai](https://keikai.io/) works as a spreadsheet component of your web application. This project is the source code of [Keikai tutorial](https://doc.keikai.io/tutorial), and it demonstrates how you can build a web application in Keikai with several examples.
+
+Welcome to check related sites:
 
 * [Demo](https://keikai.io/demo)
 * [Documentation](https://doc.keikai.io)
 
 
-# How to Try Keikai with Chrome
-Just 3 steps:
-1. [start Keikai engine](#Start-Keikai-Engine)
-2. [start an application server](#Start-an-application-server)
-3. visit [http://localhost:8080](http://localhost:8080) or URLs below with Chrome:
-* [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) 
-* [http://localhost:8080/tutorial/workflow](http://localhost:8080/tutorial/workflow) 
-* [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor)
+# How to Run This Project
+Clone the project and launch your command line interface in the keikai-tutorial folder. Execute the following commands based on your setup.
 
+## Maven ready
+`mvn jetty:run`
 
-# Start Keikai Engine
-You need to download and start keikai engine before running this project. Keikai engine is a standalone program that serves you spreadsheet related functions.
+## No Maven installed yet
+Run the Maven wrapper below which will download everything needed for you during starting up: 
+* Linux / Mac
 
-## [Download Keikai Engine](https://keikai.io/download)
-
-
-## Run Keikai Engine
-We suggest you running Keikai engine on the same machine as the tutorial project to reduce communication cost between them.
-1. unzip the downloaded zip file, go to its `keikai` folder
-2. run the executable command:
-* Mac/Linux
-`./keikai`
+`./mvnw jetty:run`
 
 * Windows
-`keikai.bat`
 
-After executing the command, you should see some messages like:
-```
-1:8888:2018-06-05 09:52:18.059549Z:keikai_dart_server:keikai_server:0
-INFO: Keikai version: 1.1.0-beta.20@jhsioate
-...
-INFO: Rikulo Stream Server 1.7.0 starting on 0.0.0.0:8888
-...
-```
-
-Then Keikai engine should start up successfully at `localhost:8888`
+`mvnw.cmd jetty:run`
 
 
-# Start an application server
-Download or clone this project to your machine.
+Then visit http://localhost:8080/tutorial
 
-You can start this project on a built-in application server with Maven wrapper without installing anything in advance (the wrapper will download and install required files for you). Just run the following command in your command line interface:
-
-##  Linux / Mac
-
-### Maven wrapper
-`./mvnw jetty:run-forked`
-
-
-## Window
-
-### Maven wrapper
-`mvnw.cmd jetty:run-forked`
-
-
-# Supported Browser
-Chrome
-
-
-# Supported File Format
-Microsoft Excel Open XML Document (**.xlsx**) only
 
 
 
 # Scenarios to Demonstrate
 
-## Workflow App - Let Business Team Design Their UI
-![](images/workflow.png)
+## Online Spreadsheet Editor
+Keikai can render an xlsx file with a Excel-like web UI and a built-in toolbar. After importing the xlsx file end users can edit it in the browser with common features like changing cell content, font, color, format, formulas and so on.
 
-This example is a workflow application built with Keikai only. Besides, it also demonstrates you that business team can design their UI by themselves.
+## Work with a Database
+There are 2 ways to interact with a database:
+1. Import/Export an xlsx file from/to your database: <br/>
+**Import**: please reference the previous section [Online Spreadsheet Editor](##Online Spreadsheet Editor) where you can import xlsx file via the UI or API. <br/>
+**Export**: All information of a book model can be exported to an .xlsx file. You can store the file in a [BLOB](https://en.wikipedia.org/wiki/Binary_large_object) field of a table in a database.
+2. Populate/Store cell data from/to your database: <br/>
+**Populate data into spreadsheet**: When displaying data from the database, you can publish data into cells with `Range` setter methods into Keikai with predefined style.<br/>
+**Store data into database**: Extract cell data or formulas you are interested with `Range` getter method and insert them into a corresponding database table. 
 
-* main Java class: `io.keikai.tutorial.app.MyWorkflow`
+This project shows the 2nd way using `Range` API to save the cell data back to the database and publish a table's data to cells. The architecture is as follows:
 
-## Budget Expense Summary App - Working with a Database
-![](images/app.png)
+![](images/database.png)
 
-This example shows you how you can pre-load an Excel template, and populate data into the template from your database. It also demonstrates how you can save the changes back to the database. 
+If you have any questions or have problem importing an Excel xlsx file, please send the file to [info@keikai.io](mailto:info@keikai.io) and request for support.
 
-To try out this App, please visit [http://localhost:8080/tutorial/app](http://localhost:8080/tutorial/app) with your browser. Follow the on-screen instructions and add a new expense to the 2nd page. The application will bring you back to the first page displaying updated numbers and charts. 
-
-
-![](images/app-architecture.png)
-
-* `AppServlet`: Works as a controller, handles HTTP requests. It calls `MyApp` to achieve business function.
-* `MyApp`: service layer. Implements application logic with Keikai Java client API. It relies on `SampleDataDao` to communicate (query/save) with the database.
-* `SampleDataDao`: persistence layer. Connects to HSQL database with JDBC. This DAO (Data Access Object) class is responsible for query and save expense data into the database. 
-
-
-## Online XLSX File Editor
-![](images/editor.png)
-
-This example demonstrates how you can build an online xlsx editor with Keikai, providing the familiar spreadsheet experiences in the Web such as formula, filtering, sorting, conditional formatting, and so on. To try out the demo, you can upload an Excel file and edit it in a browser. Please visit [http://localhost:8080/tutorial/editor](http://localhost:8080/tutorial/editor) with your browser.
-
-If you fail to import an xlsx file, please kindly send the file to [info@keikai.io](mailto:info@keikai.io).
-
-* main Java class: `io.keikai.tutorial.app.MyEditor`
-
-# Project Architecture
-![architecture.png](images/architecture.png)
-
-* The tutorial application calls Keikai Java client API to communicates with Keikai engine.
-* Keikai engine communicates with Keikai UI client in a browser to render a sheet and exchange data.
-* This project saves data into [HSQLDB](http://hsqldb.org/). Note that this is just an example, you can definitely load data from any other data source by yourselves. 
-
-# [FAQ](https://doc.keikai.io/dev-ref/faq)
