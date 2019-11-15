@@ -21,24 +21,13 @@ targetCompatibility = 1.8
 repositories {
     mavenCentral()
     mavenLocal() // remove when keikai client is published
-    // for keikai-java-client
     maven {
         url "http://mavensync.zkoss.org/maven2"
     }
 }
 
 dependencies {
-    compile "io.keikai:keikai-java-client:1.0.0"
-    compile "org.hsqldb:hsqldb:2.3.4"
-    compile "org.hsqldb:sqltool:2.3.4"
-    runtime "javax.servlet:javax.servlet-api:3.0.1"
-}
-
-//https://docs.gradle.org/current/dsl/org.gradle.plugins.ide.idea.model.IdeaModule.html
-idea {
-    module {
-        downloadJavadoc = true
-    }
+    compile "io.keikai:keikai-oss:5.0.1-Beta"
 }
 
 
