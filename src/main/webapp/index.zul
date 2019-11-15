@@ -1,5 +1,5 @@
-<zk>
-    Keikai Examples
-    <div> <a href="editor.zul">Online Editor</a>: Load your first Keikai spreadsheet for online editing.</div>
-    <div> <a href="database.zul">Work with a Database</a>: Populate data from DB and save it back.</div>
+<zk xmlns:h="native">
+    <h:h1>Keikai Examples</h:h1>
+    <h:h2> <h:a href="editor.zul">Online Editor</h:a>: Load your first Keikai spreadsheet for online editing.</h:h2>
+    <h:h2> <h:a href="database.zul">Work with a Database</h:a>: Populate data from DB and save it back.</h:h2>
 </zk>
