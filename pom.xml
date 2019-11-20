@@ -23,15 +23,24 @@
 	</licenses>
 	<repositories>
 		<repository>
-			<id>CE</id>
-			<name>CE</name>
+			<id>ZK Repository</id>
 			<url>http://mavensync.zkoss.org/maven2</url>
+		</repository>
+		<repository>
+			<id>ZK Evaluation Repository</id>
+			<url>http://mavensync.zkoss.org/eval</url>
+		</repository>
+		<repository>
+			<id>ZK EE</id>
+			<url>https://maven.zkoss.org/repo/zk/ee</url>
 		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-oss</artifactId>
+<!--			use keikai-ex for the enterprise edition-->
+<!--			<artifactId>keikai-ex</artifactId>-->
 			<version>${keikai.version}</version>
 		</dependency>
 	</dependencies>
