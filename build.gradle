@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    compile "io.keikai:keikai-oss:5.0.1-Beta"
+    compile "io.keikai:keikai-oss:5.0.0-Beta1"
 }
 
 
