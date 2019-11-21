@@ -10,9 +10,9 @@ Welcome to check related sites:
 
 
 # How to Run This Project
-Clone the project and launch your command line interface in the keikai-tutorial folder. Execute the following commands based on your setup.
+Clone the project and launch your command line interface in the keikai-tutorial folder. Execute the following commands based on your environment.
 
-## Maven ready
+## Maven installed
 `mvn jetty:run`
 
 ## No Maven installed yet
@@ -29,7 +29,7 @@ Run the Maven wrapper below which will download everything needed for you during
 Then visit http://localhost:8080/tutorial
 
 
-
+Those who know Gradle, please check `build.gradle`.
 
 # Scenarios to Demonstrate
 
