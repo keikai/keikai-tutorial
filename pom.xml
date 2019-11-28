@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>tutorial</artifactId>
-	<version>5.0.0-Beta1</version>
+	<version>5.0.0-Beta2</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
