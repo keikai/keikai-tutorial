@@ -26,7 +26,15 @@ Run the Maven wrapper below which will download everything needed for you during
 `mvnw.cmd jetty:run`
 
 
-Then visit http://localhost:8080/tutorial
+When you see the following messages:
+```
+...
+[INFO] Started Jetty Server
+[INFO] Starting scanner at interval of 5 seconds.
+
+```
+
+Then visit http://localhost:8080/tutorial with your browser. You can press `Ctrl+c` to stop the server.
 
 
 Those who know Gradle, please check `build.gradle`.
