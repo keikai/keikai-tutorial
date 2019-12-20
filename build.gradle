@@ -24,10 +24,13 @@ repositories {
     maven {
         url "http://mavensync.zkoss.org/maven2"
     }
+    maven {
+        url "http://mavensync.zkoss.org/eval"
+    }
 }
 
 dependencies {
-    compile "io.keikai:keikai-oss:5.0.0-Beta1"
+    compile "io.keikai:keikai-oss:5.0.0-Beta2"
 }
 
 

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>tutorial</artifactId>
-	<version>5.0.0.FL.20191219-Eval</version>
+	<version>5.0.0-Beta2</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
@@ -35,18 +35,6 @@
 			<url>https://maven.zkoss.org/repo/zk/ee</url>
 		</repository>
 	</repositories>
-	<dependencies>
-		<dependency>
-			<groupId>io.keikai</groupId>
-			<artifactId>keikai-ex</artifactId>
-			<version>${keikai.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.keikai</groupId>
-			<artifactId>keikai-jsp</artifactId>
-			<version>${keikai.version}</version>
-		</dependency>
-	</dependencies>
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
@@ -66,4 +54,24 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>io.keikai</groupId>
+			<artifactId>keikai-oss</artifactId>
+			<version>${keikai.version}</version>
+		</dependency>
+		<!-- uncomment below to try keikai EE -->
+		<!--
+		<dependency>
+			<groupId>io.keikai</groupId>
+			<artifactId>keikai-ex</artifactId>
+			<version>${keikai.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.keikai</groupId>
+			<artifactId>keikai-jsp</artifactId>
+			<version>${keikai.version}</version>
+		</dependency>
+		-->
+	</dependencies>
 </project>
