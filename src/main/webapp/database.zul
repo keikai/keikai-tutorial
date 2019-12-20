@@ -32,7 +32,6 @@
             </grid>
         </div>
     </hlayout>
-    <script src="right-click.js"></script>
     <script><![CDATA[
 jq('.zstbtn-addCol').hide();
 jq('.zstbtn-addRow').hide();
