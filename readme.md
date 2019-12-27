@@ -34,7 +34,7 @@ When you see the following messages:
 
 ```
 
-Then visit http://localhost:8080/tutorial with your browser. 
+Then visit http://localhost:8080/tutorial with your browser. After you have finishted playing with Keikai, you can press `Ctrl+c` to stop the server.
 
 
 Those who know Gradle, please check `build.gradle`.
@@ -64,5 +64,4 @@ By default, this project runs with Keikai open source edition (`keikai-oss`), th
 1. remove the dependency `keikai-oss`
 2. uncomment those dependencies (`keikai-ex`, `keikai-jsp`) in `pom.xml`
 3. check the latest evaluation version at [our Maven repo](https://mavensync.zkoss.org/eval/io/keikai/keikai-ex/) and specify the version at project version in `pom.xml` 
-
-After you have finishted playing with Keikai, you can press `Ctrl+c` to stop the server.
+4. run the project according to **How to Run This Project** above
