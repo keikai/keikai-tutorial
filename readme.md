@@ -34,17 +34,10 @@ When you see the following messages:
 
 ```
 
-Then visit http://localhost:8080/tutorial with your browser. You can press `Ctrl+c` to stop the server.
+Then visit http://localhost:8080/tutorial with your browser. 
 
 
 Those who know Gradle, please check `build.gradle`.
-
-# Try Keikai Enterprise Edition (EE)
-By default, this project runs with Keikai open source edition (`keikai-oss`), therefore some features are not available. You can follow the steps to try Keikai EE (evaluation release):
-1. remove the dependency `keikai-oss`
-2. uncomment those dependencies (`keikai-ex`, `keikai-jsp`) in `pom.xml`
-3. check the latest evaluation version at [our Maven repo](https://mavensync.zkoss.org/eval/io/keikai/keikai-ex/) and specify the version at project version in `pom.xml` 
-
 
 # Scenarios to Demonstrate
 
@@ -66,3 +59,10 @@ This project shows the 2nd way using `Range` API to save the cell data back to t
 
 If you have any questions or have problem importing an Excel xlsx file, please send the file to [info@keikai.io](mailto:info@keikai.io) and request for support.
 
+# Optional - Try Keikai Enterprise Edition (EE)
+By default, this project runs with Keikai open source edition (`keikai-oss`), therefore some EE-only features are not available. To try out the complete feature, you can follow the steps below to switch to Keikai EE evaluation version:
+1. remove the dependency `keikai-oss`
+2. uncomment those dependencies (`keikai-ex`, `keikai-jsp`) in `pom.xml`
+3. check the latest evaluation version at [our Maven repo](https://mavensync.zkoss.org/eval/io/keikai/keikai-ex/) and specify the version at project version in `pom.xml` 
+
+After you have finishted playing with Keikai, you can press `Ctrl+c` to stop the server.
