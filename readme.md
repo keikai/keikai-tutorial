@@ -37,8 +37,6 @@ When you see the following messages:
 Then visit http://localhost:8080/tutorial with your browser. After you have finishted playing with Keikai, you can press `Ctrl+c` to stop the server.
 
 
-Those who know Gradle, please check `build.gradle`.
-
 # Scenarios to Demonstrate
 
 ## Online Spreadsheet Editor
@@ -62,6 +60,6 @@ If you have any questions or have problem importing an Excel xlsx file, please s
 # Optional - Try Keikai Enterprise Edition (EE)
 By default, this project runs with Keikai open source edition (`keikai-oss`), therefore some EE-only features are not available. To try out the complete feature, you can follow the steps below to switch to Keikai EE evaluation version:
 1. remove the dependency `keikai-oss`
-2. uncomment those dependencies (`keikai-ex`, `keikai-jsp`) in `pom.xml`
-3. check the latest evaluation version at [our Maven repo](https://mavensync.zkoss.org/eval/io/keikai/keikai-ex/) and specify the version at project version in `pom.xml` 
+2. uncomment the dependency (`keikai-ex`) in `pom.xml`
+3. check the latest evaluation version at [our Maven repo](https://mavensync.zkoss.org/eval/io/keikai/keikai-ex/) 
 4. run the project according to **How to Run This Project** above
