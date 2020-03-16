@@ -32,6 +32,22 @@
             <url>https://mavensync.zkoss.org/eval</url>
         </repository>
     </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>io.keikai</groupId>
+            <artifactId>keikai-oss</artifactId>
+            <version>${keikai.version}</version>
+        </dependency>
+        <!-- to try the EE version replace the above with the below dependency
+             (don't use both at the same time) -->
+        <!--
+        <dependency>
+            <groupId>io.keikai</groupId>
+            <artifactId>keikai-ex</artifactId>
+            <version>${keikai-ex.version}</version>
+        </dependency>
+        -->
+    </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
@@ -50,20 +66,4 @@
             </plugin>
         </plugins>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>io.keikai</groupId>
-            <artifactId>keikai-oss</artifactId>
-            <version>${keikai.version}</version>
-        </dependency>
-        <!-- to try the EE version replace the above with the below dependency
-             (don't use both at the same time) -->
-        <!--
-        <dependency>
-            <groupId>io.keikai</groupId>
-            <artifactId>keikai-ex</artifactId>
-            <version>${keikai-ex.version}</version>
-        </dependency>
-        -->
-    </dependencies>
 </project>
