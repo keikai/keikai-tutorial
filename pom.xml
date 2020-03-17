@@ -35,16 +35,16 @@
     <dependencies>
         <dependency>
             <groupId>io.keikai</groupId>
-            <artifactId>keikai-oss</artifactId>
-            <version>${keikai.version}</version>
+            <artifactId>keikai-ex</artifactId>
+            <version>${keikai-ex.version}</version>
         </dependency>
-        <!-- to try the EE version replace the above with the below dependency
+        <!-- to try the OSE version replace the above with the below dependency
              (don't use both at the same time) -->
         <!--
         <dependency>
             <groupId>io.keikai</groupId>
-            <artifactId>keikai-ex</artifactId>
-            <version>${keikai-ex.version}</version>
+            <artifactId>keikai-oss</artifactId>
+            <version>${keikai.version}</version>
         </dependency>
         -->
     </dependencies>

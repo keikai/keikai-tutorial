@@ -57,9 +57,12 @@ This project shows the 2nd way using `Range` API to save the cell data back to t
 
 If you have any questions or have problem importing an Excel xlsx file, please send the file to [info@keikai.io](mailto:info@keikai.io) and request for support.
 
-# Optional - Try Keikai Enterprise Edition (EE)
-By default, this project runs with Keikai open source edition (`keikai-oss`), therefore some EE-only features are not available. To try out the complete feature, you can follow the steps below to switch to Keikai EE evaluation version:
-1. remove the dependency `keikai-oss`
-2. uncomment the dependency (`keikai-ex`) in `pom.xml`
-3. check the latest evaluation version at [our Maven repo](https://mavensync.zkoss.org/eval/io/keikai/keikai-ex/) 
-4. run the project according to **How to Run This Project** above
+# Optional - Try Keikai Open Source Edition (OSE)
+By default, this project runs with Keikai enterprise evaluation edition, therefore this is an up-time limit. You shall see the warning message in your server console:
+```
+SEVERE: This is an evaluation copy of Keikai Spreadsheet EE and will terminate after maximum 12 hours UPTIME or sixty days from the first date of installation. Should you require a commercial license for Keikai Spreadsheet EE please contact us at info@keikai.io for more information. Alternatively you can download Keikai Spreadsheet(OSE) which is licensed under the GPL.
+```
+You can try a free open source edition, which contains fewer features by changing dependencies: 
+1. remove the dependency `keikai-ex`
+2. uncomment the dependency (`keikai-oss`) in `pom.xml`
+3. run the project according to **How to Run This Project** above
