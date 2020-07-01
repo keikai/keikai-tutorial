@@ -6,7 +6,7 @@
     <version>5.0.0</version>
     <properties>
         <keikai.version>${project.version}</keikai.version>
-        <keikai-ex.version>5.2.0-Eval</keikai-ex.version>
+        <keikai-ex.version>5.3.0-Eval</keikai-ex.version>
         <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
         <packname>-${project.version}-FL-${maven.build.timestamp}</packname>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -42,7 +42,7 @@
         <repository>
             <id>OSE</id>
             <name>Keikai OSE</name>
-            <url>http://mavensync.zkoss.org/maven2</url>
+            <url>https://mavensync.zkoss.org/maven2</url>
         </repository>
     </repositories>
     <dependencies>
