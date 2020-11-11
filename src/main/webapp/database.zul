@@ -1,4 +1,7 @@
-<zk xmlns:h="native">
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd"
+    xmlns:h="native">
     <hlayout width="100%" vflex="1" apply="io.keikai.tutorial.database.DatabaseComposer">
         <div hflex="1" vflex="1" style="padding-left:10px">
             <h:h2>Keikai</h:h2>
