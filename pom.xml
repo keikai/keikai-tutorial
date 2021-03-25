@@ -6,7 +6,7 @@
     <version>5.0.0</version>
     <properties>
         <keikai.version>${project.version}</keikai.version>
-        <keikai-ex.version>5.6.1-Eval</keikai-ex.version>
+        <keikai-ex.version>5.7.0-Eval</keikai-ex.version>
         <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
         <packname>-${project.version}-FL-${maven.build.timestamp}</packname>
         <maven.compiler.source>1.8</maven.compiler.source>
