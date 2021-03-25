@@ -20,9 +20,9 @@
             <h:h2>Database Table:</h:h2>
             <grid id="tableGrid" style="margin-top: 41px;" width="100%">
                 <columns>
-                    <column label="ID" width="40px"/>
-                    <column label="Type" width="100px"/>
-                    <column label="Salesperson" width="100px"/>
+                    <column label="ID" hflex="min"/>
+                    <column label="Type" />
+                    <column label="Salesperson" />
                     <column label="Sales"/>
                 </columns>
                 <template name="model">
@@ -36,8 +36,4 @@
             </grid>
         </div>
     </hlayout>
-    <script><![CDATA[
-jq('.zstbtn-addCol').hide();
-jq('.zstbtn-addRow').hide();
-    ]]></script>
 </zk>
