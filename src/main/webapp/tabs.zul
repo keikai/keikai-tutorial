@@ -4,5 +4,5 @@
     <spreadsheet id="spreadsheet" height="100%" width="100%" src="/WEB-INF/books/tabs.xlsx"
                  maxVisibleRows="150" maxVisibleColumns="40"
                  showFormulabar="true" showSheetbar="true"
-    apply="io.keikai.tutorial.TabsComposer"/>
+    apply="io.keikai.tutorial.TabsComposer" onSheetSelect=""/>
 </zk>
