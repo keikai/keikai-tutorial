@@ -1,7 +1,8 @@
 <zk>
     <div height="100%" apply="support.MyController">
         <div>
-            <checkbox label="process immediately"/>
+            <checkbox id="immediatelyBox" label="process immediately"/>
+            <checkbox id="newSheetBox" label="to new sheet"/>
             <button label="process"/>
         </div>
         <spreadsheet width="100%" vflex="1" maxVisibleRows="300"
