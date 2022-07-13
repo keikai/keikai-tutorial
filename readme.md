@@ -10,7 +10,8 @@ Welcome to check related sites:
 
 
 # How to Run This Project
-Clone the project and launch your command line interface in the keikai-tutorial folder. Execute the following commands based on your environment.
+We assume you know Java and have Java SE Development Kit (JDK) installed before running the project.
+To run the project, clone the project and launch your command line interface in the keikai-tutorial folder. Execute the following commands based on your environment.
 
 ## Maven installed
 `mvn jetty:run`
