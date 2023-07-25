@@ -50,12 +50,6 @@
             <groupId>io.keikai</groupId>
             <artifactId>keikai-ex</artifactId>
             <version>${keikai-ex.version}</version>
-            <exclusions>
-                <exclusion> <!-- avoid using unnecessary jar, ZK-4860 -->
-                    <groupId>net.sf.jasperreports</groupId>
-                    <artifactId>jasperreports</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- to try the OSE version replace the above with the below dependency
              (don't use both at the same time) -->
