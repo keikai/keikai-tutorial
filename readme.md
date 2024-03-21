@@ -38,6 +38,10 @@ When you see the following messages:
 Then visit http://localhost:8080/tutorial with your browser. After you have finishted playing with Keikai, you can press `Ctrl+c` to stop the server.
 
 
+# Run with Tomcat 9
+1. `mvn clean package`
+2. `mvn cargo:run`
+
 # Scenarios to Demonstrate
 
 ## Online Spreadsheet Editor

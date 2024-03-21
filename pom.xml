@@ -3,14 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.keikai</groupId>
     <artifactId>tutorial</artifactId>
-    <version>5.0.0</version>
+    <version>6.0.0</version>
     <properties>
-        <keikai.version>${project.version}</keikai.version>
-        <keikai-ex.version>5.12.2-Eval</keikai-ex.version>
+        <keikai-ex.version>6.0.0.FL.20240320-Eval</keikai-ex.version>
         <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
         <packname>-${project.version}-FL-${maven.build.timestamp}</packname>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
     <packaging>war</packaging>
     <name>The Keikai Tutorial Project</name>
@@ -57,7 +56,7 @@
         <dependency>
             <groupId>io.keikai</groupId>
             <artifactId>keikai-oss</artifactId>
-            <version>${keikai.version}</version>
+            <version>5.0.0</version>
         </dependency>
         -->
     </dependencies>
@@ -75,6 +74,16 @@
                         <contextPath>/${project.artifactId}</contextPath>
                     </webAppConfig>
                     <scanIntervalSeconds>5</scanIntervalSeconds>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven3-plugin</artifactId>
+                <version>1.10.9</version>
+                <configuration>
+                    <container>
+                        <containerId>tomcat9x</containerId>
+                    </container>
                 </configuration>
             </plugin>
         </plugins>
